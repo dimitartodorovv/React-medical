@@ -1,0 +1,29 @@
+.wrapper_footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-top: 3px solid white;
+    margin-bottom: 16px;
+}
+
+.doc_footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.patient_footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.comp_footer {
+    display: flex;
+    align-items: flex-end; 
+}
+
+.twitter_com, .facebook_com {
+    font-size: 1.6rem;
+    padding-left: 8px;
+}
+
+

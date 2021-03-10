@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Shippori Mincho B1', serif;
+  background-color: #d9e4f5;
+  background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
+}
+
+@media screen and (max-width: 768px) {
+  
+
+      .btn_btnCon {
+          display: none !important;
+      }
+
+      .btn_show {
+          display: none  !important;
+      }
+
+
+}

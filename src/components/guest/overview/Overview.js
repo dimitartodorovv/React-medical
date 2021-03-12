@@ -1,10 +1,10 @@
 import {Link} from "react-router-dom";
 import "./Overview.css";
-import imgSmileFace from "../../img/pngtree-2d-smiling-cartoon-character-illustration-design-png-image_506122903-removebg-preview.png";
-import imgPercentage from "../../img/images-removebg-preview.png";
-import imgMedicalExam from "../../img/Medical-Examination-Market-removebg-preview.png";
-import imgdoctorHealth from "../../img/doctor-pic.png";
-import imgDiagnosis from "../../img/diagnosis-en.1614608530407.png";
+import imgSmileFace from "../../../img/pngtree-2d-smiling-cartoon-character-illustration-design-png-image_506122903-removebg-preview.png";
+import imgPercentage from "../../../img/images-removebg-preview.png";
+import imgMedicalExam from "../../../img/Medical-Examination-Market-removebg-preview.png";
+import imgdoctorHealth from "../../../img/doctor-pic.png";
+import imgDiagnosis from "../../../img/diagnosis-en.1614608530407.png";
 
 function Overview() {
     return (

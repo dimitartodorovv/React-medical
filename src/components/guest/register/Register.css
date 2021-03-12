@@ -22,7 +22,7 @@
     padding: 20px 40px;
   }
   
-  .header h1 {
+  .header h1, .header h4 {
     margin: 0;
     text-align: center;
   }
@@ -44,6 +44,8 @@
   .paragraph {
     text-align: center;
     font-size: 18px;
+    color: #019fb6;
+    font-weight: bold;
   }
   
   .secondParag {
@@ -77,6 +79,11 @@
     background-color: #41bbd6c2;
     cursor: pointer;
   }
+
+  .tologin {
+      text-decoration: none;
+      color: #019fb6;
+  }
   
   .check-pass { 
     animation: fadeOut 1s forwards;
@@ -84,7 +91,8 @@
     width: auto;
     overflow: hidden;
     text-align: center;
-    color: red;
+    font-weight: bold;
+    color: rgb(223, 2, 2);
   }
   
   @keyframes fadeOut {

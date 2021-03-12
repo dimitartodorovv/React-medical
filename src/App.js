@@ -1,47 +1,37 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import {useState} from "react";
 
-
-
-import Header from "./components/header/Headers";
-import Home from "./components/home/Home";
-import Overview from "./components/overview/Overview";
-import ErrorPage from "./components/ErrorPage";
-import Register from "./components/register/Register";
-import About from "./components/About";
-import Footer from "./components/footer/Footer";
-
+import IsGuest from "./pages/IsGuest";
+import IsLoged from "./pages/IsLog";
+ 
 
 function App() {
 
-  
+   const [loged,setLoged] = useState(localStorage.getItem("logedUser") || false);
 
+//    const checkForLogedUser = localStorage.getItem("logedUser")
+    
+//    if(checkForLogedUser) {
+//        setLoged(true)
+//    }
+
+  const handleLogin = (loged) => {
+        setLoged({loged})
+  }
+  console.log(loged);
     return (
-      <Router>
-       <Header />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/register">
-            <Register/>
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/overview">
-            <Overview />
-          </Route>
-          <Route path="*">
-            <ErrorPage />
-          </Route>
-        </Switch>
-        <Footer />
-      </Router>
-  
-    );
+        
+        <Router>
+           <Switch>
+           {/* <Route  path="/"  render={() => <IsGuest handleLoged={handleLogin}/>} /> */}
+           {loged ? <Route path="/login" render={() => <IsLoged isLoged={handleLogin}/>}/> :  <Route  path="/"  render={() => <IsGuest handleLoged={handleLogin}/>} />}
 
+           </Switch>
+        </Router>
+    );  
 
+    //  {loged ? <Route  path="/home" isLoged={handleLogin} render={() => <IsLoged />}/> :  <Route  path="/" handleLoged={handleLogin} render={() => <IsGuest />} />} 
   
 }
 

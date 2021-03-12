@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import "./Header.css";
-import imgMed from "../../img/png-clipart-staff-of-hermes-caduceus-as-a-symbol-of-medicine-physician-cancer-astrology-miscellaneous-text-removebg-preview.png";
+import imgMed from "../../../img/png-clipart-staff-of-hermes-caduceus-as-a-symbol-of-medicine-physician-cancer-astrology-miscellaneous-text-removebg-preview.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 

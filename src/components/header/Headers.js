@@ -79,15 +79,15 @@ function Header() {
                         </li>
                     </ul>
                 </div>
-                <div className="btn_btnCon">
-                    <button className="btn_consult">Start Consultation</button>
-                </div>
+                
+                    <Link className="btn_consult" to="/register">Start Consultation</Link>
+                
             </header>
 
             {showMenu && <NavChoise buttonPatiant={changePatiant} buttonDoctor= {changeDoctor} />}
 
             <div className={showButton ? "btn_show" : "btn_hide"}>
-                <button className="btn_consult">Start Consultation</button>
+                <Link className="btn_consult" to="/register">Start Consultation</Link>
             </div>
 
         </>

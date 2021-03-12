@@ -1,0 +1,97 @@
+
+.reg {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .registration {
+    background-color: #ffffff8f;
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.74);
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 400px;
+  }
+  
+  .header {
+    padding: 20px 40px;
+  }
+  
+  .header h1 {
+    margin: 0;
+    text-align: center;
+  }
+  
+  .field {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+    text-align: center;
+  }
+  
+  .field input {
+    margin-bottom: 40px;
+  }
+  
+  .paragraph {
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  .secondParag {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    opacity: 0.4;
+  }
+  
+  .field input {
+    width: 80%;
+    height: 30px;
+    border-radius: 5px;
+  }
+  
+  .btn-reg:hover {
+    background-color: #91e4f7d8;
+  }
+  
+  .btn-registration {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    top: 70%;
+    border: 1px solid black;
+    font-weight: bold;
+    width: 80%;
+    height: 45px;
+    margin-top: 40px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #41bbd6c2;
+    cursor: pointer;
+  }
+  
+  .check-pass { 
+    animation: fadeOut 1s forwards;
+    animation-delay: 2s;
+    width: auto;
+    overflow: hidden;
+    text-align: center;
+    color: red;
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }

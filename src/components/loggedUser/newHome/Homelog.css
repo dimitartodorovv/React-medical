@@ -1,0 +1,105 @@
+.header-login {
+   margin-left: 260px;
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: row;
+   justify-content: space-around;
+    align-items: center;
+}
+.left_icon-login, .right_icon-login{
+    font-size: xx-large;
+}
+
+.left_icon-login svg, .right_icon-login svg {
+    color: #019fb6;
+}
+
+.badge {
+    display: inline-table;
+    position: relative;
+    top: -14px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: small;
+}
+
+.wrap_main-login {
+    margin-left: 260px;
+    margin-bottom: 20px;
+}
+
+.frame-login {
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 0 50px 0 50px;
+}
+
+.top_side-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  
+}
+
+.find_doctor-log, .send_case-log, .book_app-log  {
+    text-align: center;
+    padding-top: 30px;
+    
+}
+
+.find_doctor-log svg, .send_case-log svg, .book_app-log svg {
+    font-size: xx-large;
+}
+
+
+.find_doctor-log a, .send_case-log a, .book_app-log a {
+    color: #019fb6;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.down_side-login h3 {
+ font-weight: bold;
+ text-align: center;
+}
+
+.section_doc-log {
+    list-style: none;
+   
+}
+
+.section_doc-log svg {
+    font-size: xx-large;
+    color: #019fb6;   
+    padding-left: 30px
+}
+
+.section_doc-log li {
+    height: 50px;
+    padding-top: 10px;
+    width: 90%;
+    border-radius: 12px;
+}
+
+.section_doc-log li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+   
+}
+
+.section_doc-log li a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+   color: black;
+    margin-left: 20px;
+   display: inline-block;
+   transition: color 0.5s;
+}
+
+.section_doc-log li a:hover {
+    color: #019fb6;
+}

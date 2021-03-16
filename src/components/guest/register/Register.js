@@ -1,7 +1,7 @@
 import "./Register.css";
 import {useHistory, Link} from "react-router-dom"
 import {useState} from "react";
-import {makeRegister} from "../../data/data";
+import {makeRegister} from "../../data/dataAuth";
 
 function Register() {
 
@@ -32,9 +32,9 @@ function Register() {
                 if(data.error) {
                     setShowMessage(true)
                     setMessages(data.error);
-                    setTimeout(() => {
-                        setShowMessage(false);    
-                    }, 1000);
+                    // setTimeout(() => {
+                    //     setShowMessage(false);    
+                    // }, 2000);
                     return;
                 }
                

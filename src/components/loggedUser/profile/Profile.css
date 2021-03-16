@@ -1,0 +1,80 @@
+
+
+.right_icon-login a {
+    text-decoration: none;
+}
+
+.btn_setting {
+    color: whitesmoke;
+    text-align: center;
+}
+
+.right_icon-profile {
+    border: 1px solid gray;
+    padding: 5px 10px 5px 10px;
+    background-color: #019fb6;
+    border-radius: 12px;
+}
+
+
+
+.right_icon-profile a {
+    text-decoration: none;
+    font-size: x-large;
+}
+
+.img-avatar-prof {
+    width: 100px;
+    height: 100px;
+    margin-top: 40px;
+}
+
+.prof_user-profile h3 {
+    text-align: center;
+}
+
+.down_side-profile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.inf_profile {
+    margin-top: 30px;
+}
+
+.inf_profile a {
+    text-decoration: none;
+}
+
+.inf_profile p {
+    color: #019fb6;
+    font-weight: bold;
+}
+
+.inf_profile a svg {
+    font-size: xx-large;
+    color: #019fb6;
+}
+
+.pers_field-prof {
+    margin-left: 20px;
+    border-bottom: 1px solid gray;
+    width: 90%;
+}
+
+
+.logout-user {
+    margin-left: 260px; 
+    background-color: #019fb6;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.3rem;
+    padding: 5px 12px 5px 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}

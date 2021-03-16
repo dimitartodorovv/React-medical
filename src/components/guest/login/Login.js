@@ -1,8 +1,8 @@
-import {signIn} from "../../data/data";
+import {signIn} from "../../data/dataAuth";
 import {useState} from "react";
 
 function Login(props) {
-    console.log("FROM NOT LOGED USER");
+   
     const [data, setData] = useState({
         email: '',
         password: '',
@@ -18,29 +18,37 @@ function Login(props) {
         setData({ ...data, [name]: value })
     };
 
+    // let userSS = 'userSession'
+    // var match = document.cookie.match(new RegExp('(^| )' + userSS + '=([^;]+)'));
+   
 
+    // if(match[2]) {
+    //     localStorage.setItem("logedUser", `outside`)
+
+    // }
 
     const handleSubmit =  (e) => {
         e.preventDefault();
         if(data.email &&  data.password && data.rePass){
            
+           
+            
+          signIn(data).then(data => {
             console.log(data);
-            props.handleLogin.handleLoged(true);
-            localStorage.setItem("logedUser", "userLog")
-        //   signIn(data).then(data => {
+            if(data.error) {
+                setShowMessage(true)
+                setMessages(data.error);
+                setTimeout(() => {
+                    setShowMessage(false);    
+                }, 2000);
+                return;
+            }
 
-        //     if(data.error) {
-        //         setShowMessage(true)
-        //         setMessages(data.error);
-        //         setTimeout(() => {
-        //             setShowMessage(false);    
-        //         }, 1000);
-        //         return;
-        //     }
-               
-        //     setData({email: '',password: '',rePass: ''})
+            props.handleLogin.handleLoged(true);
+            localStorage.setItem("logedUser", `${data.username}`)
+            setData({email: '',password: '',rePass: ''})
               
-        //   })
+          })
          
 
     }

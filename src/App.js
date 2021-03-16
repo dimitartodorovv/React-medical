@@ -1,37 +1,33 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+
+
 import {useState} from "react";
 
 import IsGuest from "./pages/IsGuest";
-import IsLoged from "./pages/IsLog";
+import {IsLoged} from "./pages/IsLog";
  
 
 function App() {
 
-   const [loged,setLoged] = useState(localStorage.getItem("logedUser") || false);
+   const isTrue = localStorage.getItem("logedUser");
 
-//    const checkForLogedUser = localStorage.getItem("logedUser")
-    
-//    if(checkForLogedUser) {
-//        setLoged(true)
-//    }
+   const [loged,setLoged] = useState( isTrue || false);
 
   const handleLogin = (loged) => {
-        setLoged({loged})
+        setLoged(loged)
+
   }
-  console.log(loged);
+console.log(loged);
     return (
         
         <Router>
            <Switch>
-           {/* <Route  path="/"  render={() => <IsGuest handleLoged={handleLogin}/>} /> */}
-           {loged ? <Route path="/login" render={() => <IsLoged isLoged={handleLogin}/>}/> :  <Route  path="/"  render={() => <IsGuest handleLoged={handleLogin}/>} />}
-
+            {loged ? <Redirect exact from="/" to="/login" /> : null}   
+           {loged ? <Route  path="/login" render={() => <IsLoged isLoged={handleLogin}/>}/> :  <Route  path="/"  render={() => <IsGuest handleLoged={handleLogin}/>} />}
            </Switch>
         </Router>
     );  
-
-    //  {loged ? <Route  path="/home" isLoged={handleLogin} render={() => <IsLoged />}/> :  <Route  path="/" handleLoged={handleLogin} render={() => <IsGuest />} />} 
   
 }
 

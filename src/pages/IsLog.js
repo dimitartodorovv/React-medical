@@ -3,7 +3,7 @@
 import NewHome from "../components/loggedUser/newHome/HomeLog";
 import Navigation from "../components/loggedUser/navBar/Navigation";
 import Profile from "../components/loggedUser/profile/Profile";
-import React, {useContext} from "react"
+import React from "react"
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 

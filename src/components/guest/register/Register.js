@@ -1,6 +1,6 @@
 import "./Register.css";
 import {useHistory, Link} from "react-router-dom"
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import {makeRegister} from "../../data/dataAuth";
 
 function Register() {
@@ -11,7 +11,11 @@ function Register() {
             password: '',
             rePass: ''
     });
+
+
     let history = useHistory();
+
+
     const [messages,setMessages] = useState("");
     const [showM,setShowMessage] = useState(false);
     
@@ -32,9 +36,9 @@ function Register() {
                 if(data.error) {
                     setShowMessage(true)
                     setMessages(data.error);
-                    // setTimeout(() => {
-                    //     setShowMessage(false);    
-                    // }, 2000);
+                    setTimeout(() => {
+                        setShowMessage(false);    
+                    }, 2000);
                     return;
                 }
                
@@ -52,9 +56,8 @@ function Register() {
         <div className="registration">
             <div className="header">
                 <h1>Happy Healthy</h1>
-                <h4>Registration</h4>
             </div>
-            <p className="paragraph">For patients</p>
+            <p className="paragraph">Registration</p>
             <form >
                 <div className="field">
                     <input type="text" className="email-field" placeholder="Email adress" name="email" value={data.email} onChange={(e) => {handleFormData(e)}} />           

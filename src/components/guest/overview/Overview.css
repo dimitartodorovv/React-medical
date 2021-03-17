@@ -8,7 +8,7 @@
 .overview_title {
     border-radius: 20px;
     color: #019fb6;
-    background-image: linear-gradient(360deg, white, transparent);
+    background-image: linear-gradient(460deg,  rgba(255, 255, 255, 0.6) ,  transparent);
     font-size: 2.5rem;
     width: 440px;
 }

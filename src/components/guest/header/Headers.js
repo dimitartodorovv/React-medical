@@ -61,7 +61,7 @@ function Header() {
                 <div className="logo_logoName">
                     <img className="logo" src={imgMed} alt="med" />                  
                     <h2 className="logo_name" >
-                       <Link to="/">Happy Healthy</Link> 
+                       <Link to="/">SUPERDOC</Link> 
                     </h2>
                 </div>
 
@@ -69,25 +69,25 @@ function Header() {
                     <ul className={"opt_menu"}>
                         <li onClick={() => { optionClient() }}> {pageDoctor ? "For Doctors" : "For Patients"} {arrow ? arrowUp : arrowDown}</li>
                         <li> 
-                           {pageDoctor ? <Link to="/overview">Overview</Link> : <Link to="/find-doctor">Find doctor</Link>}
+                           {pageDoctor ? null : <Link to="/find-doctor">Find doctor</Link>}
                         </li>
                         <li> 
                             {pageDoctor ? <Link to="/online-booking">Online booking</Link> : <Link to="/send-case">Send case</Link>}
                         </li>
                         <li> 
-                            {pageDoctor ? <Link to="/blog">Blog</Link> : <Link to="/what-we-do">What we do?</Link>}
+                            {pageDoctor ? <Link to="/blog">Blog</Link> : <Link to="/overview">Who are we?</Link>}
                         </li>
                     </ul>
                 </div>
                 
-                    <Link className="btn_consult" to="/register">Start Consultation</Link>
+            {pageDoctor ? null : <Link className="btn_consult" to="/register">Start Consultation</Link>}
                 
             </header>
 
             {showMenu && <NavChoise buttonPatiant={changePatiant} buttonDoctor= {changeDoctor} />}
 
             <div className={showButton ? "btn_show" : "btn_hide"}>
-                <Link className="btn_consult" to="/register">Start Consultation</Link>
+                 {pageDoctor ? null : <Link className="btn_consult" to="/register">Start Consultation</Link>}
             </div>
 
         </>

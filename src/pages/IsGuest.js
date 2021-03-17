@@ -8,7 +8,10 @@ import ErrorPage from "../components/ErrorPage";
 import Register from "../components/guest/register/Register";
 import Login from "../components/guest/login/Login";
 import About from "../components/About";
+import FindDoctor from "../components/guest/findDoctor/FindDoctor";
+import OverviewDoc from "../components/guest/overviewDocotrs/OverviewDoc";
 import Footer from "../components/guest/footer/Footer";
+
 
 function IsGuest(props) {
   
@@ -19,18 +22,31 @@ function IsGuest(props) {
             <Route exact path="/">
               <Home />
             </Route>
+
             <Route path="/register">
               <Register/>
             </Route>
-            <Router path="/login">
+
+            <Route path="/login">
               <Login handleLogin={props} />
-            </Router>
+            </Route>
+
+            <Route path="/find-doctor">
+              <FindDoctor />
+            </Route>
+
             <Route path="/about">
               <About />
             </Route>
-            <Route path="/overview">
+
+            <Route path="/doctors">
+              <OverviewDoc />
+            </Route>
+
+            <Route path="/patiants">
               <Overview />
             </Route>
+
             <Route path="*">
               <ErrorPage />
             </Route>

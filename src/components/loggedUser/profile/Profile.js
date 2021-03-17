@@ -34,7 +34,10 @@ function Profile({ history, handleLogin }) {
         handleLogin.isLoged(false);
         localStorage.removeItem("logedUser")
         signOut().then(data => {
-
+            
+            if(data.error) {
+                console.log(data.error);
+            }
             history.push('/login')
         })
     }

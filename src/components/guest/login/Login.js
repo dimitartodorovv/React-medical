@@ -1,14 +1,14 @@
-import {signIn} from "../../data/dataAuth";
-import {useState} from "react";
+import { signIn } from "../../data/dataAuth";
+import { useState, useEffect } from "react";
 
 function Login(props) {
-   
+
     const [data, setData] = useState({
         email: '',
         password: '',
         rePass: ''
     });
-    
+
     const [messages, setMessages] = useState("");
     const [showM, setShowMessage] = useState(false);
 
@@ -18,51 +18,46 @@ function Login(props) {
         setData({ ...data, [name]: value })
     };
 
-    // let userSS = 'userSession'
-    // var match = document.cookie.match(new RegExp('(^| )' + userSS + '=([^;]+)'));
-   
-
-    // if(match[2]) {
-    //     localStorage.setItem("logedUser", `outside`)
-
-    // }
-
-    const handleSubmit =  (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        if(data.email &&  data.password && data.rePass){
+        if (data.email && data.password && data.rePass) {
+
            
+
+            signIn(data).then(data => {
+                console.log(data);
+                if (data.error) {
+                    setShowMessage(true)
+                    setMessages(data.error);
+                    setTimeout(() => {
+                        setShowMessage(false);
+                    }, 2000);
+                    return;
+                }
+
+                
+                // localStorage.setItem("logedUser", `${data.username}`)
+                setData({ email: '', password: '', rePass: '' })
+                props.handleLogin.handleLoged(data.username);
+            })
+
            
-            
-          signIn(data).then(data => {
-            console.log(data);
-            if(data.error) {
-                setShowMessage(true)
-                setMessages(data.error);
-                setTimeout(() => {
-                    setShowMessage(false);    
-                }, 2000);
-                return;
-            }
+        }
+    };
 
-            props.handleLogin.handleLoged(true);
-            localStorage.setItem("logedUser", `${data.username}`)
-            setData({email: '',password: '',rePass: ''})
-              
-          })
-         
-
-    }
-};
-
+    useEffect(() => {
+        // handleSubmit(data)
+        
+    },[])
 
     return (
         <section className="reg">
             <div className="registration">
                 <div className="header">
                     <h1>Happy Healthy</h1>
-                    <h4>Login</h4>
+
                 </div>
-                <p className="paragraph">For patients</p>
+                <p className="paragraph">Login</p>
                 <form >
                     <div className="field">
 
@@ -75,6 +70,7 @@ function Login(props) {
                         <button type="submit" className="btn-registration" onClick={handleSubmit}>Forward</button>
                     </div>
                 </form>
+               
             </div>
         </section>
 

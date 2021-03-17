@@ -11,24 +11,24 @@ function Overview() {
         <div className="wrapp_overview">
             <div className="up_side-overview">
                 <h1 className="overview_title">Expert medical help. Wherever you are.</h1>
-                <p>Skip the waiting room and speak with top doctors online wherever you are, using the Happy Healthy</p>
+                <p>Skip the waiting room and speak with top doctors online wherever you are, using the Superdoc</p>
                     <Link className="btn_consult-per" to="register">Start Consultation</Link> 
             </div>
             <img className="exa_doc" src={imgMedicalExam} alt="medical-examination" />
             <div className="middle_side-overview">
                 <img className="percent_rate" src={imgPercentage} alt="success-percentage" />
                 <span></span>
-                <p><b>96% Success rate</b><br />With Happy Healthy, you can get meaningful advice in the vast majority of cases</p>
+                <p><b>96% Success rate</b><br />With Superdoc, you can get meaningful advice in the vast majority of cases</p>
             </div>
             <div className="mid_happy_client-overview">
                 <img className="smile_face-overview" src={imgSmileFace} alt="smile-face" />
-                <p><b>Happy patients</b><br />What patients say about Happy Healthy</p>
+                <p><b>Happy patients</b><br />What patients say about Superdoc</p>
                 {/* NEED TO PUT LINK FOR PEOPLE COMMENT */}
             </div>
             <img className="doc_img-overview" src={imgdoctorHealth} alt="doctor-img" />
             <div className="mid_scrl_side-overview">
                 <h3>Find the right doctor</h3>
-                <p>Happy Healthy is used by hundreds of doctors, with various specialties and rich expertise. Find and connect with the doctor who is right for you. You can then share symptoms, complaints, lab results and medical images, and ask for consultations.</p>
+                <p>Superdoc is used by hundreds of doctors, with various specialties and rich expertise. Find and connect with the doctor who is right for you. You can then share symptoms, complaints, lab results and medical images, and ask for consultations.</p>
             </div>
             <div className="mid_scrl2_side-overview">
                 <h3>Get timely advice from selected doctors</h3>

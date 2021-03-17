@@ -22,7 +22,7 @@ function Footer() {
         <footer className="wrapper_footer">
             <div className="doc_footer">
                 <p><b>For Doctors</b></p>
-                <span>Why Happy Healty?</span>
+                <span>Why Superdoc?</span>
                 <span>Online bookig</span>
 
             </div>

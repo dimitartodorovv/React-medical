@@ -5,6 +5,7 @@ import Navigation from "../components/loggedUser/navBar/Navigation";
 import Profile from "../components/loggedUser/profile/Profile";
 import SaveTime from "../components/loggedUser/savetime/SaveTime";
 import SearchSpec from "../components/loggedUser/findDoctor/findWithSpecialty/FindWithSpecialty";
+import ErrorPage from "../components/ErrorPage";
 import React from "react";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -30,6 +31,9 @@ function IsLoged(props) {
                 </Route>
                 <Route path="/login/save-time/:userID">
                     <SaveTime /> 
+                </Route>
+                <Route path="*">
+                    <ErrorPage />
                 </Route>
                 </ApplicationContext.Provider>
             </Switch>

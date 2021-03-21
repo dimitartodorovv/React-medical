@@ -19,7 +19,7 @@ function LoadDocFromData(props) {
                 <div className="left-side-spec">
                     <h1>{doctor.name}</h1>
                     <h3>{doctor.specialty} - {doctor.working}</h3>
-                   {logUser ?  <Link  className="find_btn-spec" to={`/login/save-time/${doctor._id}`}>save time</Link> : <p className="reg-title">need registration if you want save time</p>}            
+                   {logUser ?  <Link  className="find_btn-spec" to={`/login/save-time/${doctor._id}`}>make an appointment</Link> : <p className="reg-title">need registration if you want save time</p>}            
                 </div>
 
             </div>

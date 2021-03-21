@@ -96,10 +96,12 @@
     cursor: pointer;
     text-decoration: none;
     color: white;
+    box-shadow: 0 0 40px 40px linear-gradient(25deg, #019fb6 50%, rgba(81, 113, 255, 0.932)) inset, 0 0 0 0 linear-gradient(25deg, #019fb6 50%, rgba(81, 113, 255, 0.932));
+    transition: all 150ms ease-in-out;
   }
 
   .btn_consult:hover {
-    background-image: linear-gradient(180deg, rgb(60, 221, 208), rgb(81, 113, 255));
+      box-shadow: 0 0 10px 0 #019fb6 inset, 0 0 10px 4px #019fb6;
   }
   
   .btn_hide {

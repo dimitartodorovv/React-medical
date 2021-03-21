@@ -42,7 +42,7 @@ function Information(props) {
                     <h1 className="name_doctor">{name}</h1>
                     <h3 className="spec_doctor">{specialty}</h3>
                     <h3 className="exp_doctor">{working} - {expirience} years of experience</h3>
-                    <a className="btn_save-time" href="#saveTime-cal">Save time</a>
+                    <a className="btn_save-time" href="#saveTime-cal">make an appointment</a>
                 </div>
                 <div className="google-map-loc">
                     <MapContainer loc={location} />

@@ -19,7 +19,15 @@
     margin: 13px;
     outline: none;
     cursor: pointer;
+    box-shadow: 0 0 40px 40px linear-gradient(25deg, #019fb6 50%, rgba(81, 113, 255, 0.932)) inset, 0 0 0 0 linear-gradient(25deg, #019fb6 50%, rgba(81, 113, 255, 0.932));
+    transition: all 150ms ease-in-out;
+    
 }
+
+.select-sector:hover {
+    box-shadow: 0 0 10px 0 #019fb6 inset, 0 0 10px 4px #019fb6;
+}
+
 .img_superDoc {
     display: inline-block;
     width: 320px; 
@@ -42,7 +50,12 @@
     border-radius: 10px;
     cursor: pointer;
     color: whitesmoke;
+    box-shadow: 0 0 40px 40px linear-gradient(25deg, #019fb6 50%, rgba(81, 113, 255, 0.932)) inset, 0 0 0 0 linear-gradient(25deg, #019fb6 50%, rgba(81, 113, 255, 0.932));
     font-weight: bold;
     font-size: large;
+    transition: all 150ms ease-in-out;
 }
 
+.btn_slc-find:hover {
+    box-shadow: 0 0 10px 0 #019fb6 inset, 0 0 10px 4px #019fb6;
+}

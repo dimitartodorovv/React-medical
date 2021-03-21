@@ -52,7 +52,7 @@ function Profile({ history, handleLogin }) {
                     <h1>Profile</h1>
                 </div>
                 <div className="right_icon-profile">
-                    <Link><div className="btn_setting">Edit</div></Link>
+                    <Link to="/login/profile/edit"><div className="btn_setting">Edit</div></Link>
                 </div>
             </header>
 

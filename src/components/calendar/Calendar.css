@@ -1,0 +1,53 @@
+
+.wrapp_calendar-saveTime {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.hours_calendar {
+    border: 2px solid #019fb6;
+    height: auto;
+    min-height: 180px;
+    width: 180px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 12px;
+}
+
+.dateOne_calendar, .dateTwo_calendar, .dateThree_calendar {
+    text-align: center;
+}
+
+.hours_calendar a {
+    margin: 4px 4px;
+    border: 2px solid #019fb6;
+    height: 28px;
+    width: 40px;
+    border-radius: 12px;
+    padding: 8px;
+    text-decoration: none;
+    color: #019fb6;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.8s;
+    
+}
+
+.hours_calendar a:hover {
+    background-color: #019fb6;
+    color: whitesmoke;
+}
+
+.btn_calendar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn_next-date, .btn_prev-date {
+    color: #019fb6;
+    font-size: xx-large;
+    cursor: pointer;
+}

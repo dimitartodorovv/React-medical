@@ -18,7 +18,7 @@ function App() {
         setLoged(loged)
 
   }
-console.log(loged);
+
     return (
         
         <Router>

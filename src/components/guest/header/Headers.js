@@ -17,7 +17,7 @@ function Header() {
     let arrowUp = <FontAwesomeIcon icon={faChevronUp} />;
 
     const handleScroll = () => {
-        if (window.pageYOffset > 100) {
+        if (window.pageYOffset > 200) {
             setShowButton(true);
 
         } else {

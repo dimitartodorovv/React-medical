@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faAddressBook, faEnvelope,  faSearch, faCommentAlt, faCalendarAlt, faBrain,faHeartbeat,faAllergies,faLeaf,faEye,faBaby,faAssistiveListeningSystems } from '@fortawesome/free-solid-svg-icons';
 import {Link} from "react-router-dom";
-import {useContext} from "react"
-import {ApplicationContext} from "../../../pages/IsLog";
+
+
 function NewHome() {
    
     let favDoc = <FontAwesomeIcon icon={faAddressBook}/>;
@@ -21,21 +21,19 @@ function NewHome() {
     let baby = <FontAwesomeIcon icon={faBaby} />;
     let ears = <FontAwesomeIcon icon={faAssistiveListeningSystems} />;
 
-    const data = useContext(ApplicationContext);
-    console.log(data);
-
+    
     return (
 
         <>      
         <header className="header-login">
             <div className="left_icon-login">
-                <Link>{favDoc}</Link>
+                <Link to="/login/appointments">{favDoc}</Link>
             </div>
             <div className="title-login">
                 <h1>Find doctor</h1>
             </div>
             <div className="right_icon-login">
-                <Link>{info}<span className="badge">2</span></Link>
+                <Link to="/login/messages">{info}<span className="badge">0</span></Link>
             </div>
         </header>
 
@@ -59,12 +57,12 @@ function NewHome() {
                     <h3>Most popular specialties</h3>
                     <ul className="section_doc-log">
                     <li> {alergies}<Link to="/login/find-doctor/dermatology">Dermatology</Link></li>
-                      <li> {heartBeat}  <Link>Cardiology</Link>  </li>
-                       <li> {leaf} <Link>Homeopathy</Link> </li>
-                        <li> {brain} <Link>Neurology</Link></li>                    
-                        <li>   {ears}     <Link>ENT</Link></li>
-                       <li> {baby} <Link>Pediatrics</Link> </li>
-                      <li> {eyes} <Link>Ophthalmology</Link>  </li>
+                      <li> {heartBeat}  <Link to="/login/find-doctor/cardiology">Cardiology</Link>  </li>
+                       <li> {leaf} <Link to="/login/find-doctor/homeopathy">Homeopathy</Link> </li>
+                        <li> {brain} <Link to="/login/find-doctor/neurology">Neurology</Link></li>                    
+                        <li>   {ears}     <Link to="/login/find-doctor/ent">ENT</Link></li>
+                       <li> {baby} <Link to="/login/find-doctor/pediatrics">Pediatrics</Link> </li>
+                      <li> {eyes} <Link to="/login/find-doctor/opthalmology">Ophthalmology</Link>  </li>
                     </ul>
                 </div>
             </div>

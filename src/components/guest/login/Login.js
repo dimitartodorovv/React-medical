@@ -11,6 +11,7 @@ function Login(props) {
 
     const [messages, setMessages] = useState("");
     const [showM, setShowMessage] = useState(false);
+    const [clickBtn,setclickBtn] = useState(false);
 
     const handleFormData = (e) => {
         const name = e.target.name;
@@ -22,10 +23,7 @@ function Login(props) {
         e.preventDefault();
         if (data.email && data.password && data.rePass) {
 
-           
-
             signIn(data).then(data => {
-                console.log(data);
                 if (data.error) {
                     setShowMessage(true)
                     setMessages(data.error);
@@ -34,27 +32,29 @@ function Login(props) {
                     }, 2000);
                     return;
                 }
-
-                
-                // localStorage.setItem("logedUser", `${data.username}`)
+             
+                setclickBtn(true)
+                 localStorage.setItem("logedUser", JSON.stringify(data))
                 setData({ email: '', password: '', rePass: '' })
-                props.handleLogin.handleLoged(data.username);
             })
-
+          
            
         }
     };
 
     useEffect(() => {
-        // handleSubmit(data)
         
-    },[])
+        if(clickBtn){
+            props.handleLogin.handleLoged(true);
+        }
+        
+    },[props,clickBtn])
 
     return (
         <section className="reg">
             <div className="registration">
                 <div className="header">
-                    <h1>Happy Healthy</h1>
+                    <h1>Superdoc</h1>
 
                 </div>
                 <p className="paragraph">Login</p>

@@ -10,15 +10,15 @@ function Overview() {
     return (
         <div className="wrapp_overview">
             <div className="up_side-overview">
-                <h1 className="overview_title">Expert medical help. Wherever you are.</h1>
-                <p>Skip the waiting room and speak with top doctors online wherever you are, using the Superdoc</p>
+                <h1 className="overview_title">Expert medical help.</h1>
+                <p>You don't wait in front of the doctor's cabinet. Save your time and use Superdoc</p>
                     <Link className="btn_consult-per" to="register">Start Consultation</Link> 
             </div>
             <img className="exa_doc" src={imgMedicalExam} alt="medical-examination" />
             <div className="middle_side-overview">
                 <img className="percent_rate" src={imgPercentage} alt="success-percentage" />
                 <span></span>
-                <p><b>96% Success rate</b><br />With Superdoc, you can get meaningful advice in the vast majority of cases</p>
+                <p><b>96% Save time</b><br />With Superdoc, you can get meaningful advice in the vast majority of cases</p>
             </div>
             <div className="mid_happy_client-overview">
                 <img className="smile_face-overview" src={imgSmileFace} alt="smile-face" />

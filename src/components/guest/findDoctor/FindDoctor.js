@@ -1,65 +1,53 @@
 
 import "./FindDoctor.css"
-import superDoc from "../../../img/super-doctor-cartoon-character-superhero-doctor-with-hero-cloaks-healthcare-vector-concept-medical-concept-first-aid-182377164-removebg-preview.png"
-import {useState} from "react";
-import {useFetch} from "../../data/dataDoc"
+import superDoc from "../../../img/super-doctor-cartoon-character-superhero-doctor-with-hero-cloaks-healthcare-vector-concept-medical-concept-first-aid-182377164-removebg-preview.png";
+import { useState } from "react";
+import { useFetch } from "../../data/dataDoc";
+import { URL, END_POINT } from "../../../config/configVar";
+import filterDoc from "../../service/filterDoc";
+import SearchNotFound from "../reUseCom/SearchNotFound";
+import LoadDocFromData from "../reUseCom/SearchDoc";
+import SearchAreaDoc from "../reUseCom/SearchAreaDoc";
 
 function FindDoctor() {
 
-    const [specialty,setSpecialty] = useState();
-    const [town,setTown] = useState();
+    const pathTodoc = `${URL}${END_POINT.DOCTORS}`;
+
+    const { dataDoctors } = useFetch(pathTodoc);
+
+    const [specialty, setSpecialty] = useState();
+    const [town, setTown] = useState();
+    const [allDoctors, setAllDoctors] = useState([]);
 
     const handleChoiceSpecialty = (e) => {
-          setSpecialty(e.target.value);
+        setSpecialty(e.target.value);
     };
     const handleChoiceCity = (e) => {
         setTown(e.target.value);
     }
-    const {load,data}  = useFetch();
-   const handleChoice = () => {
-    
-     console.log(data);
-        if(specialty || town) {
-            console.log(specialty,town);
+
+    const handleChoice = () => {
+
+        if (specialty || town) {
+            let data = filterDoc(specialty, town, dataDoctors)
+            setAllDoctors(data)
+
         }
-   }
+    }
 
     return (
         <>
             <div className="choice_sec">
                 <h1 className="title_sec">Find a doctor and book an appointment online!</h1>
-                <form >
-                    <select onChange={(e) => {handleChoiceSpecialty(e)}} className="select-sector" name="doctors" >
-                        <option value=""  defaultValue="selected">Choose a specialty</option>
-                        <option value="pediatrics">Pediatrics</option>
-                        <option value="orthopedics">Orthopedics</option>
-                        <option value="neonatology">Neonatology</option>
-                        <option value="neurology">Neurology</option>
-                        <option value="urology">Urology</option>
-                        <option value="surgery">Surgery</option>
-                        <option value="ophthalmology">Ophthalmology</option>
-                        <option value="hematology">Hematology</option>
-                        <option value="endocrinology">Endocrinology</option>
-                    </select>
-                </form>
-                <form >
-                    <select onChange={(e) => {handleChoiceCity(e)}} className="select-sector" name="town" >
-                        <option value=""  defaultValue="selected">Select a location</option>
-                        <option value="sofia">Sofia</option>
-                        <option value="plovdiv">Plovdiv</option>
-                        <option value="pleven">Pleven</option>
-                        <option value="varna">Varna</option>
-                        <option value="staraZagora">Stara Zagora</option>
-                        <option value="velikoTurnovo">Veliko Turnovo</option>
-                        
-                    </select>
-                </form>
-                <img className="img_superDoc" src={superDoc} alt="super-doc"/>
-            </div>
-          
+                <SearchAreaDoc handleChoiceSpecialty={handleChoiceSpecialty} handleChoiceCity={handleChoiceCity} />
+                <img className="img_superDoc" src={superDoc} alt="super-doc" />
 
-            <button type="submit" className="btn_slc-find" onClick={() => handleChoice()}>Search</button>
-            
+            </div>
+
+            <button className="btn_slc-find" onClick={() => handleChoice()}>Search</button>
+
+            {allDoctors === false ? <SearchNotFound /> : <LoadDocFromData docData={allDoctors} />}
+
         </>
     );
 

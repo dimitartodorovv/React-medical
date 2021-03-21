@@ -1,6 +1,6 @@
 import "./Register.css";
 import {useHistory, Link} from "react-router-dom"
-import {useState,useEffect} from "react";
+import {useState} from "react";
 import {makeRegister} from "../../data/dataAuth";
 
 function Register() {
@@ -55,7 +55,7 @@ function Register() {
         <section className="reg">
         <div className="registration">
             <div className="header">
-                <h1>Happy Healthy</h1>
+                <h1>Superdoc</h1>
             </div>
             <p className="paragraph">Registration</p>
             <form >

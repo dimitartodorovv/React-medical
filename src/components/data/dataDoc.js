@@ -1,31 +1,29 @@
-import {useState, useEffect} from "react";
-import {URL,END_POINT} from "../../config/configVar";
+import { useState, useEffect } from "react";
+
+export const useFetch = (url) => {
+    const [loading, setLoading] = useState(true);
+    const [dataDoctors, setdataDoctors] = useState([]);
 
 
-export const useFetch = () => {
-        const [loading,setLoading] = useState(true);
-        const [data,setData] = useState([]);
+    const getData = async (url) => {
 
+        fetch(`${url}`, {
+            headers: { "Content-Type": "application/json" },
+            method: 'GET',
+            credentials: "include",
+        }).then(res => res.json())
+            .then(data => {
+                setdataDoctors(data)
+                setLoading(false)
+            }).catch(err => {
 
-        const getData = async () => {
-               await fetch(`${URL}${END_POINT.DOCTORS}`,{
-                headers: {"Content-Type": "application/json"},
-                method: 'GET',
-                credentials: "include", 
-                }).then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        setData(data)
-                        setLoading(false)
-                    }).catch(err => {
-                        console.log(err);
-                        setLoading(true)
-                    })
-        }
+                setLoading(true)
+            })
+    };
 
-        useEffect(() => {
-            getData()
-        },[])
+    useEffect(() => {
+        getData(url);
+    }, [url]);
 
-        return {loading,data}
-}
+    return { loading, dataDoctors }
+};

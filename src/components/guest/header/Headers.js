@@ -80,14 +80,14 @@ function Header() {
                     </ul>
                 </div>
                 
-            {pageDoctor ? null : <Link className="btn_consult" to="/register">Start Consultation</Link>}
+            {pageDoctor ? null : <Link className="btn_consult" to="/register">Make an appointment</Link>}
                 
             </header>
 
             {showMenu && <NavChoise buttonPatiant={changePatiant} buttonDoctor= {changeDoctor} />}
 
             <div className={showButton ? "btn_show" : "btn_hide"}>
-                 {pageDoctor ? null : <Link className="btn_consult" to="/register">Start Consultation</Link>}
+                 {pageDoctor ? null : <Link className="btn_consult" to="/register">Make an appointment</Link>}
             </div>
 
         </>

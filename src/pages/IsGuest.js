@@ -46,7 +46,7 @@ function IsGuest(props) {
           <Overview />
         </Route>
 
-        <Route path="*">
+        <Route >
           <ErrorPage />
         </Route>
       </Switch>

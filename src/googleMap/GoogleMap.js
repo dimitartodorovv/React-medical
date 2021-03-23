@@ -4,7 +4,6 @@ import {GOOGLE_MAP} from "../config/mapKey"
 
 function MapContainer (props) {
 
-    console.log(props.loc);
     const mapStyles = {        
         height: "50vh",
         width: "100%",
@@ -23,7 +22,7 @@ function MapContainer (props) {
              zoom={6}
              center={defaultCenter}
            >
-           <Marker position={props.loc}/>
+           {props.loc ? <Marker position={props.loc}/> : null}
            </GoogleMap>
         </LoadScript>
      )

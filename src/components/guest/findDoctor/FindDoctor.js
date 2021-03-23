@@ -2,7 +2,7 @@
 import "./FindDoctor.css"
 import superDoc from "../../../img/super-doctor-cartoon-character-superhero-doctor-with-hero-cloaks-healthcare-vector-concept-medical-concept-first-aid-182377164-removebg-preview.png";
 import { useState } from "react";
-import { useFetch } from "../../data/dataDoc";
+import { useFetch } from "../../data/dataCustomHook";
 import { URL, END_POINT } from "../../../config/configVar";
 import filterDoc from "../../service/filterDoc";
 import SearchNotFound from "../reUseCom/SearchNotFound";
@@ -13,7 +13,7 @@ function FindDoctor() {
 
     const pathTodoc = `${URL}${END_POINT.DOCTORS}`;
 
-    const { dataDoctors } = useFetch(pathTodoc);
+    const { dataBE } = useFetch(pathTodoc);
 
     const [specialty, setSpecialty] = useState();
     const [town, setTown] = useState();
@@ -29,14 +29,14 @@ function FindDoctor() {
     const handleChoice = () => {
 
         if (specialty || town) {
-            let data = filterDoc(specialty, town, dataDoctors)
+            let data = filterDoc(specialty, town, dataBE)
             setAllDoctors(data)
 
         }
     }
 
     return (
-        <>
+        <section>
             <div className="choice_sec">
                 <h1 className="title_sec">Find a doctor and book an appointment online!</h1>
                 <SearchAreaDoc handleChoiceSpecialty={handleChoiceSpecialty} handleChoiceCity={handleChoiceCity} />
@@ -48,7 +48,7 @@ function FindDoctor() {
 
             {allDoctors === false ? <SearchNotFound /> : <LoadDocFromData docData={allDoctors} />}
 
-        </>
+        </section>
     );
 
 

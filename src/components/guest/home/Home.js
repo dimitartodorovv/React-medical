@@ -10,7 +10,7 @@ function Home() {
             <div className="up_side-homeP">
                 <h1 className="home_title">Connecting doctors and patients together</h1>
                 <span><b>Who are we?</b></span>
-                <p>Happy Healty is a telehealth platform that benefits doctors and patients through convenient and accessible virtual contact</p>
+                <p>SUPERDOC is a telehealth platform that benefits doctors and patients through convenient and accessible virtual contact</p>
                 
                 <Link to="/learn-more" className="btn_learnM">Learn more</Link>
             </div>

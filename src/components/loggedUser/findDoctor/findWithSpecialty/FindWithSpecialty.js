@@ -6,7 +6,7 @@ import SearchDoc from "../../../guest/reUseCom/SearchDoc";
 import filterDoc from "../../../service/filterDoc";
 import {URL,END_POINT} from "../../../../config/configVar";
 import SearchNotFound from "../../../guest/reUseCom/SearchNotFound";
-import { useFetch } from "../../../data/dataDoc";
+import { useFetch } from "../../../data/dataCustomHook";
 import SearchAreaDoc from "../../../guest/reUseCom/SearchAreaDoc";
 import './FindWithSpecialty.css';
 
@@ -18,7 +18,7 @@ function Specialty() {
 
     const pathTodoc = `${URL}${END_POINT.DOCTORS}`;
 
-    const { dataDoctors } = useFetch(pathTodoc);
+    const { dataBE } = useFetch(pathTodoc);
     
     const [specialty, setSpecialty] = useState();
     const [town, setTown] = useState();
@@ -33,7 +33,7 @@ function Specialty() {
     const handleChoice = () => {
 
         if (specialty || town) {
-            let newData = filterDoc(specialty, town, dataDoctors)
+            let newData = filterDoc(specialty, town, dataBE)
             setFiltData(newData)
 
         }
@@ -44,13 +44,13 @@ function Specialty() {
         const allpaths = path.pathname.split('/');
         let filterData = null;
     
-        if(dataDoctors.data) {
-            filterData  = filterDoc(allpaths[3], null, dataDoctors);
+        if(dataBE.data) {
+            filterData  = filterDoc(allpaths[3], null, dataBE);
         }
         
         setFiltData(filterData)
         
-    }, [dataDoctors,path])
+    }, [dataBE,path])
     
 
 

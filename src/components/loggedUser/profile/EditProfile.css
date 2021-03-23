@@ -1,0 +1,53 @@
+
+
+.user_prof-data {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}
+
+.user_prof-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+
+}
+
+.user_prof-form label {
+    padding: 17px;
+}
+
+.user_prof-form input {
+    width: 25vw;
+    height: 4vh;
+    border-radius: 12px;
+    outline: none;
+    overflow: hidden;
+    border: none;
+}
+
+.btn_save-userProf {
+    display: inline-block;
+    background-color: #019fb6;
+    color: white;
+    padding: 12px;
+    width: 250px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    margin: 13px;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 0 40px 40px linear-gradient(25deg, #019fb6 50%, rgba(81, 113, 255, 0.932)) inset, 0 0 0 0 linear-gradient(25deg, #019fb6 50%, rgba(81, 113, 255, 0.932));
+    transition: all 150ms ease-in-out;
+}
+
+.btn_save-userProf:hover {
+    box-shadow: 0 0 10px 0 #019fb6 inset, 0 0 10px 4px #019fb6;
+}

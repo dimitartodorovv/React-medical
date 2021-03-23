@@ -3,7 +3,7 @@ import {useLocation} from "react-router-dom";
 import Calendar from "../../calendar/Calendar";
 import Information from "../savetime/Information";
 
-import {useFetch} from "../../data/dataDoc";
+import {useFetch} from "../../data/dataCustomHook";
 import {URL,END_POINT} from "../../../config/configVar";
 
 import './SaveTime.css';
@@ -17,11 +17,11 @@ function SaveTime() {
     const [oneDoc,setAOneDoc] = useState('');
     
     const pathTodoc = `${URL}${END_POINT.SEARCHDOCTORS}/${path[3]}`;
-    const {dataDoctors} = useFetch(pathTodoc);
+    const {dataBE} = useFetch(pathTodoc);
   
     useEffect(() => {
-        setAOneDoc(dataDoctors)
-    }, [dataDoctors])
+        setAOneDoc(dataBE)
+    }, [dataBE])
 
 
 

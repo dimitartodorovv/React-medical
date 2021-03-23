@@ -6,6 +6,8 @@ const END_POINT = {
     LOGOUT: "auth/logout",
     DOCTORS: "doctors",
     SEARCHDOCTORS: "doctors/search",
+    PROFILE: "patient",
+    EDIT_PROFILE: "patient/edit"
     
 }
 

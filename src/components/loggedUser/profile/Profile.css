@@ -5,8 +5,20 @@
 }
 
 .btn_setting {
-    color: whitesmoke;
     text-align: center;
+    display: inline-block;
+    background-color: #019fb6;
+    color: white;
+    padding: 12px;
+    width: 150px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    border-radius: 12px;
+}
+
+.btn_setting:hover {
+    box-shadow: 0 0 10px 0 #019fb6 inset, 0 0 10px 4px #019fb6;
 }
 
 .right_icon-profile {
@@ -66,7 +78,7 @@
 
 
 .logout-user {
-    margin-left: 260px; 
+    margin: 20px 380px; 
     background-color: #019fb6;
     outline: none;
     border: none;
@@ -74,8 +86,6 @@
     color: white;
     font-size: 1.3rem;
     padding: 5px 12px 5px 12px;
-    margin-top: 10px;
-    margin-bottom: 10px;
     cursor: pointer;
     box-shadow: 0 0 40px 40px linear-gradient(25deg, #019fb6 50%, rgba(81, 113, 255, 0.932)) inset, 0 0 0 0 linear-gradient(25deg, #019fb6 50%, rgba(81, 113, 255, 0.932));
     transition: all 150ms ease-in-out;

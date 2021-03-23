@@ -1,9 +1,9 @@
 import {URL,END_POINT} from '../../config/configVar';
 
 
-async function makeRegister({email,username,password,rePass}) {
+ function makeRegister({email,username,password,rePass}) {
 
-    let result = await fetch(`${URL}${END_POINT.REGISTER}`,{
+    let result = fetch(`${URL}${END_POINT.REGISTER}`,{
       headers: {"Content-Type": "application/json"},
       method: "POST",
       credentials: "include",
@@ -14,9 +14,9 @@ async function makeRegister({email,username,password,rePass}) {
         return result      
 }
 
-async function signIn({email,password,rePass}) {
+ function signIn({email,password,rePass}) {
 
-    let result = await fetch(`${URL}${END_POINT.LOGIN}`,{
+    let result =  fetch(`${URL}${END_POINT.LOGIN}`,{
       headers: {"Content-Type": "application/json"},
       method: "POST",
       credentials: "include",
@@ -26,9 +26,9 @@ async function signIn({email,password,rePass}) {
         return result
 }
 
-async function signOut() {
+ function signOut() {
   
-  let result = await fetch(`${URL}${END_POINT.LOGOUT}`,{
+  let result =  fetch(`${URL}${END_POINT.LOGOUT}`,{
     headers: {"Content-Type": "application/json"},
     method: "POST",
     credentials: "include"}).then(res => res.json())

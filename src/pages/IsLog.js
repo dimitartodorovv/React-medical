@@ -6,6 +6,7 @@ import Profile from "../components/loggedUser/profile/Profile";
 import SaveTime from "../components/loggedUser/savetime/SaveTime";
 import SearchSpec from "../components/loggedUser/findDoctor/findWithSpecialty/FindWithSpecialty";
 import ErrorPage from "../components/ErrorPage";
+import EditProfile from "../components/loggedUser/profile/EditProfile";
 import React from "react";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -19,11 +20,11 @@ function IsLoged(props) {
         <Router>  
             <Navigation />
             <Switch>
-                <ApplicationContext.Provider value="asdasd">
+                <ApplicationContext.Provider value="">
                 <Route exact path="/login">
                     <NewHome />
                 </Route>
-                <Route  path="/login/profile">
+                <Route exact path="/login/profile">
                         <Profile handleLogin={props} />
                 </Route>
                 <Route path="/login/find-doctor">
@@ -32,10 +33,13 @@ function IsLoged(props) {
                 <Route path="/login/save-time/:userID">
                     <SaveTime /> 
                 </Route>
+                <Route path="/login/profile/edit">
+                    <EditProfile />
+                </Route>
+                </ApplicationContext.Provider>
                 <Route path="*">
                     <ErrorPage />
                 </Route>
-                </ApplicationContext.Provider>
             </Switch>
         </Router>
     );

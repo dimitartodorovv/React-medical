@@ -15,7 +15,6 @@
     font-size: 20px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
     border-radius: 12px;
-    width: 330px;
     margin: 13px;
     outline: none;
     cursor: pointer;
@@ -30,8 +29,10 @@
 
 .img_superDoc {
     display: inline-block;
-    width: 320px; 
-    height: 420px;
+    /* width: 320px;  */
+    /* height: 420px; */
+    width: 30vw;
+    /* height: 50vh; */
     position: relative;
     bottom: 300px;
     left: 550px;

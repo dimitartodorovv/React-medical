@@ -10,8 +10,24 @@ body {
   background-attachment: fixed;
 }
 
+p {
+  font-weight: bold;
+}
+
+
+
+
+
 @media screen and (max-width: 768px) {
-  
+
+      .nav_left {
+         max-width: 50px;
+      }
+
+
+      .img_superDoc {
+          visibility: hidden;
+      }
 
       .btn_consult {
           display: none !important;

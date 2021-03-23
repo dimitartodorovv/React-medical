@@ -122,7 +122,7 @@ function Calendar(props) {
                     <h4>{dateOne}</h4>
                     <div className="hours_calendar">
                         {hours.map((el, index) =>
-                            <Link key={index}>{el}</Link>
+                            <Link to="/login/save-time/make-appointment" key={index}>{el}</Link>
                         )}
                     </div>
                 </div>
@@ -131,7 +131,7 @@ function Calendar(props) {
                     <h4>{dateTwo}</h4>
                     <div className="hours_calendar">
                         {hoursSec.map((el, index) =>
-                            <Link key={index + 1}>{el}</Link>
+                            <Link to="/login/save-time/make-appointment" key={index + 1}>{el}</Link>
                         )}
                     </div>
                 </div>
@@ -140,7 +140,7 @@ function Calendar(props) {
                     <h4>{dateThree}</h4>
                     <div className="hours_calendar">
                         {hoursThr.map((el, index) =>
-                            <Link key={index + 2}>{el}</Link>
+                            <Link to="/login/save-time/make-appointment" key={index + 2}>{el}</Link>
                         )}
                     </div>
                 </div>

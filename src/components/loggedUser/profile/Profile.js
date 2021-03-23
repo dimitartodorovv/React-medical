@@ -5,7 +5,9 @@ import "./Profile.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faFlask, faFileAlt, faHistory } from '@fortawesome/free-solid-svg-icons';
 import imageAvatar from "../../../img/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582-removebg-preview.png";
-import { useState } from "react";
+import {useFetch} from "../../data/dataCustomHook";
+import {URL,END_POINT} from "../../../config/configVar";
+import { useState, useEffect } from "react";
 
 function Profile({ history, handleLogin }) {
 
@@ -14,20 +16,27 @@ function Profile({ history, handleLogin }) {
     let file = <FontAwesomeIcon icon={faFileAlt} />;
     let histories = <FontAwesomeIcon icon={faHistory} />;
 
- 
+    const id = JSON.parse(localStorage.getItem("logedUser")).id;
+    
+    const {loading, dataBE} = useFetch(`${URL}${END_POINT.PROFILE}/${id}`)
 
 
-    const [name, setName] = useState("Not set");
-    const [date, setDate] = useState("Not set");
-    const [gender, setGender] = useState("Not set");
-    const [height, setHeight] = useState("Not set");
-    const [eyeColor,setEyeColor] = useState("Not set");
-    const [bloodType, setBloodType] = useState("Not set");
-    const [hairColor, setHairColor] = useState("Not set");
-
-
-
-
+    const [dataInfo, setDataInfo] = useState({
+        name: "Not set",
+        dateOfBirth: "Not set",
+        gender: "Not set",
+        height: "Not set",
+        eyeColor: "Not set",
+        bloodType: "Not set",
+        hairColor: "Not set",
+        userID: "Not set"
+    });
+   
+    useEffect(() => {
+        if(!loading) {
+            setDataInfo({...dataBE.data})
+        }
+    },[dataBE.data,loading]);
 
     const logoutApp = () => {
 
@@ -61,7 +70,7 @@ function Profile({ history, handleLogin }) {
                     <div className="top_side-login">
                         <div className="prof_user-profile">
                             <img className="img-avatar-prof" src={imageAvatar} alt="avatar"/>
-                            <h3>{name}</h3>
+                            <h3>{dataInfo.name}</h3>
                         </div>
                     </div>
                     <div className="down_side-profile">
@@ -81,27 +90,27 @@ function Profile({ history, handleLogin }) {
                     <div className="personal_field">
                         <div  className="pers_field-prof" >
                             <p>Date of birth</p>
-                            <h4>{date}</h4>
+                            <h4>{dataInfo.date}</h4>
                         </div>
                         <div className="pers_field-prof">
                             <p>Gender</p>
-                            <h4>{gender}</h4>
+                            <h4>{dataInfo.gender}</h4>
                         </div>
                         <div className="pers_field-prof">
                             <p>Height</p>
-                            <h4>{height}</h4>
+                            <h4>{dataInfo.height}</h4>
                         </div>
                         <div className="pers_field-prof">
                             <p>Blood type</p>
-                            <h4>{bloodType}</h4>
+                            <h4>{dataInfo.bloodType}</h4>
                         </div>
                         <div className="pers_field-prof">
                             <p>Eye color</p>
-                            <h4>{eyeColor}</h4>
+                            <h4>{dataInfo.eyeColor}</h4>
                         </div>
                         <div className="pers_field-prof">
                             <p>Hair color</p>
-                            <h4>{hairColor}</h4>
+                            <h4>{dataInfo.hairColor}</h4>
                         </div>
 
                     </div>

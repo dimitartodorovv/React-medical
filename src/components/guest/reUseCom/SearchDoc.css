@@ -25,7 +25,7 @@
     color: red;
 }
 
-.find_btn-spec {
+.find_btn-spec, .btn_pagination {
     outline: none;
     border: none;
     background-image: linear-gradient(25deg, #019fb6 50%, rgba(81, 113, 255, 0.932));
@@ -41,6 +41,6 @@
    
 }
 
-.find_btn-spec:hover {
+.find_btn-spec:hover, .btn_pagination:hover {
     box-shadow: 0 0 10px 0 #019fb6 inset, 0 0 10px 4px #019fb6;
 }

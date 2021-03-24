@@ -4,3 +4,17 @@
     text-align: center;
     display: flex;
 }
+
+.page_pagination {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn_pagination, .pages_doc {
+    margin: 20px;
+}
+
+.pages_doc span {
+    font-size: large;
+    color: rgba(0, 0, 0, 0.7);
+}

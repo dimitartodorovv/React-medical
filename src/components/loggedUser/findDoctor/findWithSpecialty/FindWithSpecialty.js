@@ -6,19 +6,24 @@ import SearchDoc from "../../../guest/reUseCom/SearchDoc";
 import filterDoc from "../../../service/filterDoc";
 import {URL,END_POINT} from "../../../../config/configVar";
 import SearchNotFound from "../../../guest/reUseCom/SearchNotFound";
-import { useFetch } from "../../../data/dataCustomHook";
 import SearchAreaDoc from "../../../guest/reUseCom/SearchAreaDoc";
+import usePaginations from "../../pagination/pagination";
 import './FindWithSpecialty.css';
 
 
 function Specialty() {
 
     const path = useLocation();
-    const [filtData,setFiltData] = useState([]);
+    const pathChecker = path.pathname.split("/");
 
+    const [filtData,setFiltData] = useState([]);
+    const [checkData,setCheckData] = useState(false);
+    const [error, setError] = useState("");
+    
+    
+    
     const pathTodoc = `${URL}${END_POINT.DOCTORS}`;
 
-    const { dataBE } = useFetch(pathTodoc);
     
     const [specialty, setSpecialty] = useState();
     const [town, setTown] = useState();
@@ -33,24 +38,50 @@ function Specialty() {
     const handleChoice = () => {
 
         if (specialty || town) {
-            let newData = filterDoc(specialty, town, dataBE)
+
+            let newData = filterDoc(specialty, town, filtData)
+            if(!newData) {
+                setCheckData(false);   
+                return 
+            }
+            setCheckData(true);
             setFiltData(newData)
 
         }
     }
     
+    //   const {next, prev, jump, currentData, currentPage, maxPage} = usePaginations(filtData,3);
+  
     useEffect(() => {
         
-        const allpaths = path.pathname.split('/');
-        let filterData = null;
-    
-        if(dataBE.data) {
-            filterData  = filterDoc(allpaths[3], null, dataBE);
-        }
+       
+        fetch(`${pathTodoc}`, {
+            headers: { "Content-Type": "application/json" },
+            method: `GET`,
+            credentials: "include",
+        }).then(res => res.json())
+            .then(data => {
+                setFiltData(data.data);
+               
+                if(pathChecker.length > 3) {
+                    let newData = filterDoc(pathChecker[3], null, data);
+                        if(!newData) {
+                            setCheckData(false);   
+                            return 
+                        }
+                        setFiltData(newData);
+                        setCheckData(true);
+                    }else{
+                        setCheckData(true);
+                    }                       
+                        
+                        
+
+            }).catch(err => {
+                setError(err);
+            })
         
-        setFiltData(filterData)
-        
-    }, [dataBE,path])
+    }, [pathTodoc,path,specialty,town])
     
 
 
@@ -60,7 +91,10 @@ function Specialty() {
             <SearchAreaDoc handleChoiceSpecialty={handleChoiceSpecialty} handleChoiceCity={handleChoiceCity} />
             <button className="btn_slc-find" onClick={() => handleChoice()}>Search</button>
             </div>
-           {filtData ? <SearchDoc docData={filtData}/> : <SearchNotFound />} 
+           {/* {filtData ? <SearchDoc docData={currentComments}/> : <SearchNotFound />}  */}
+
+           {checkData ? <SearchDoc docData={filtData}/> : <SearchNotFound />} 
+        
         </div>
     ); 
 

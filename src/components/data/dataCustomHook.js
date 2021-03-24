@@ -20,7 +20,7 @@ export const useFetch = (url) => {
     //             setLoading(true)
     //         })
     // };
-  
+  console.log(url);
     useEffect(() => {
         
         fetch(`${url}`, {
@@ -32,12 +32,11 @@ export const useFetch = (url) => {
                         setDataBE(data)
                         setLoading(false)
                     }).catch(err => {
-                        setDataBE()
                         setLoading(true)
                     })
 
     
     }, [url]);
-
+        console.log("COUNT");
     return { loading, dataBE }
 };

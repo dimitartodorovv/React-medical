@@ -6,7 +6,7 @@ import "./SearchDoc.css";
 function LoadDocFromData(props) {
    
     const logUser = JSON.parse(localStorage.getItem("logedUser"));
-    
+    console.log(props);
    
     return (
         props.docData.map(doctor =>

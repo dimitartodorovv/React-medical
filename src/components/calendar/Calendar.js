@@ -12,7 +12,6 @@ function Calendar(props) {
     let rightArrow = <FontAwesomeIcon icon={faChevronCircleRight} />;
     let leftArrow = <FontAwesomeIcon icon={faChevronCircleLeft} />;
 
-    const [workDate, setWorkDate] = useState([]);
 
     const [dayOne, setDayOne] = useState('');
     const [dayTwo, setDayTwo] = useState('');
@@ -43,8 +42,8 @@ function Calendar(props) {
         setHoursSec([]);
         setHoursThr([]);
 
-        const compareDate = workDate.data.workDates[0].date;
-        const hour = workDate.data.workHours[0].hours;
+        const compareDate = props.oneDoc.workDates[0].date;
+        const hour = props.oneDoc.workHours[0].hours;
 
         const hoursCalc = calcHours(dateText, dateTwo, dateThree);
 
@@ -76,8 +75,8 @@ function Calendar(props) {
         setHoursThr([]);
 
 
-        const compareDate = workDate.data.workDates[0].date;
-        const hour = workDate.data.workHours[0].hours;
+        const compareDate = props.oneDoc.workDates[0].date;
+        const hour = props.oneDoc.workHours[0].hours;
 
         const hoursCalc = calcHours(dateText, dateTwo, dateThree);
 
@@ -93,13 +92,7 @@ function Calendar(props) {
         }
     };
 
-    useEffect(() => {
-
-        if (props.oneDoc.data) {
-            setWorkDate(props.oneDoc)
-        }
-
-    }, [props])
+  
 
     useEffect(() => {
 

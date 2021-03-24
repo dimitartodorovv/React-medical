@@ -1,7 +1,6 @@
 
 import {useState, useEffect} from "react";
 import {sendSettings} from "../../data/patientProfile";
-import {useFetch} from "../../data/dataCustomHook";
 import {URL,END_POINT} from "../../../config/configVar";
 import './EditProfile.css';
 
@@ -21,8 +20,7 @@ function EditProfile() {
    
     const id = JSON.parse(localStorage.getItem("logedUser")).id;
     
-    const {loading , dataBE} = useFetch(`${URL}${END_POINT.PROFILE}/${id}`);
-   
+  
     const changeUserProf = (e) =>  {
 
             setData({...data,[e.target.name]: e.target.value});
@@ -45,12 +43,19 @@ function EditProfile() {
     
     useEffect(() => {
         
-        if(!loading){
-            setData({...dataBE.data})
-        }
-        
+        fetch(`${URL}${END_POINT.PROFILE}/${id}`, {
+            headers: { "Content-Type": "application/json" },
+            method: `GET`,
+            credentials: "include",
+        }).then(res => res.json())
+            .then(data => {
+                setData({...data.data})
+            }).catch(err => {
+                console.log(err);
+            })
 
-    },[loading,dataBE.data])
+
+    },[])
 
     return (
         <div className="user_prof-data">

@@ -12,20 +12,20 @@ function Information(props) {
     const [education, setEducation] = useState('');
     const [location,setLocation] = useState('');
 
-   
+   console.log(props);
 
     useEffect(() => {
 
-        if (props.oneDoc.data) {
-            setName(props.oneDoc.data.name);
-            setExpirience(props.oneDoc.data.expirience);
-            setSpecialty(props.oneDoc.data.specialty);
-            setWorking(props.oneDoc.data.working);
-            setEducation(props.oneDoc.data.education);
-            if(props.oneDoc.data.location) {
+        if (props.oneDoc) {
+            setName(props.oneDoc.name);
+            setExpirience(props.oneDoc.expirience);
+            setSpecialty(props.oneDoc.specialty);
+            setWorking(props.oneDoc.working);
+            setEducation(props.oneDoc.education);
+            if(props.oneDoc.location) {
                 const makeNumbers = {
-                    lat: Number(props.oneDoc.data.location.lat),
-                    lng: Number(props.oneDoc.data.location.lng)
+                    lat: Number(props.oneDoc.location.lat),
+                    lng: Number(props.oneDoc.location.lng)
                 }    
                    setLocation(makeNumbers);
        

@@ -5,7 +5,6 @@ import "./Profile.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faFlask, faFileAlt, faHistory } from '@fortawesome/free-solid-svg-icons';
 import imageAvatar from "../../../img/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582-removebg-preview.png";
-import {useFetch} from "../../data/dataCustomHook";
 import {URL,END_POINT} from "../../../config/configVar";
 import { useState, useEffect } from "react";
 
@@ -18,9 +17,6 @@ function Profile({ history, handleLogin }) {
 
     const id = JSON.parse(localStorage.getItem("logedUser")).id;
     
-    const {loading, dataBE} = useFetch(`${URL}${END_POINT.PROFILE}/${id}`)
-
-
     const [dataInfo, setDataInfo] = useState({
         name: "Not set",
         dateOfBirth: "Not set",
@@ -31,12 +27,21 @@ function Profile({ history, handleLogin }) {
         hairColor: "Not set",
         userID: "Not set"
     });
-   
+    
     useEffect(() => {
-        if(!loading) {
-            setDataInfo({...dataBE.data})
-        }
-    },[dataBE.data,loading]);
+
+        fetch(`${URL}${END_POINT.PROFILE}/${id}`, {
+            headers: { "Content-Type": "application/json" },
+            method: `GET`,
+            credentials: "include",
+        }).then(res => res.json())
+            .then(data => {
+                setDataInfo({...data.data})
+            }).catch(err => {
+                console.log(err);
+            })
+      
+    },[]);
 
     const logoutApp = () => {
 
@@ -90,7 +95,7 @@ function Profile({ history, handleLogin }) {
                     <div className="personal_field">
                         <div  className="pers_field-prof" >
                             <p>Date of birth</p>
-                            <h4>{dataInfo.date}</h4>
+                            <h4>{dataInfo.dateOfBirth}</h4>
                         </div>
                         <div className="pers_field-prof">
                             <p>Gender</p>

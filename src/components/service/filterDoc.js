@@ -2,7 +2,11 @@
 function filterDoc(specialty,town,data) {
 
     let newData = data.data;
-
+    
+    if(newData === undefined) {
+        newData = data;
+    }
+   
     if (specialty) {
         newData = newData.filter(doc => doc.specialty.toLowerCase().includes(specialty.toLowerCase()));
     }
@@ -13,7 +17,7 @@ function filterDoc(specialty,town,data) {
     if(newData.length < 1) {
         return false
     }
-    
+  
     return newData
 }
 

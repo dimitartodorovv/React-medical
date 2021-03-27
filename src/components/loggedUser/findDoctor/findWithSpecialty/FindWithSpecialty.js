@@ -4,10 +4,11 @@ import { useLocation } from "react-router-dom";
 // import {ApplicationContext} from "../../../../pages/IsLog";
 import SearchDoc from "../../../guest/reUseCom/SearchDoc";
 import filterDoc from "../../../service/filterDoc";
-import { URL, END_POINT } from "../../../../config/configVar";
+import { URL, END_POINT, LIMIT_PAGE } from "../../../../config/configVar";
 import SearchNotFound from "../../../guest/reUseCom/SearchNotFound";
 import SearchAreaDoc from "../../../guest/reUseCom/SearchAreaDoc";
 import usePaginations from "../../pagination/pagination";
+import {getData} from "../../../data/dataAction";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleRight, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import './FindWithSpecialty.css';
@@ -18,8 +19,9 @@ function Specialty() {
     const path = useLocation();
     const pathChecker = path.pathname.split("/");
 
-    let rightArrow = <FontAwesomeIcon icon={faChevronCircleRight} />;
-    let leftArrow = <FontAwesomeIcon icon={faChevronCircleLeft} />;
+    const  rightArrow = <FontAwesomeIcon icon={faChevronCircleRight} />;
+    const  leftArrow = <FontAwesomeIcon icon={faChevronCircleLeft} />;
+
 
     const [filtData, setFiltData] = useState([]);
     const [checkData, setCheckData] = useState(false);
@@ -50,7 +52,7 @@ function Specialty() {
         }
     }
 
-    const { next, prev, jump, currentData, currentPage, maxPage } = usePaginations(filtData, 3);
+    const { next, prev, jump, currentData, currentPage, maxPage } = usePaginations(filtData, LIMIT_PAGE);
 
     const dataPag = currentData();
 
@@ -66,13 +68,14 @@ function Specialty() {
     useEffect(() => {
 
 
-        fetch(`${URL}${END_POINT.DOCTORS}`, {
-            headers: { "Content-Type": "application/json" },
-            method: `GET`,
-            credentials: "include",
-        }).then(res => res.json())
-            .then(data => {
-                setFiltData(data.data);
+        
+        getData(`${URL}${END_POINT.DOCTORS}`).then(data => {
+                
+            if(data.error) {
+                setError(data.error);
+            }
+
+            setFiltData(data.data);
 
                 if (pathChecker.length > 3) {
                   

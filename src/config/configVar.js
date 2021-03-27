@@ -7,12 +7,13 @@ const END_POINT = {
     DOCTORS: "doctors",
     SEARCHDOCTORS: "doctors/search",
     PROFILE: "patient",
-    EDIT_PROFILE: "patient/edit"
-    
+    EDIT_PROFILE: "patient/edit"    
 }
 
+const LIMIT_PAGE = 10;
 
 export {
     URL,
-    END_POINT
+    END_POINT,
+    LIMIT_PAGE,
 }

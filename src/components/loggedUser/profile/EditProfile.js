@@ -1,7 +1,9 @@
 
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
+import { PatientContext } from "../../pationtContext";
 import {sendSettings} from "../../data/patientProfile";
 import {URL,END_POINT} from "../../../config/configVar";
+import { getData } from "../../data/dataAction";
 import './EditProfile.css';
 
 function EditProfile() {
@@ -17,9 +19,8 @@ function EditProfile() {
          hairColor: "",
          userID: ""
     });
-   
-    const id = JSON.parse(localStorage.getItem("logedUser")).id;
-    
+    const [patientInfo]= useContext(PatientContext)
+      
   
     const changeUserProf = (e) =>  {
 
@@ -30,10 +31,10 @@ function EditProfile() {
         e.preventDefault();
 
      
-       const upData = {...data, userID: id}
+       const upData = {...data, userID: patientInfo.id}
      
 
-        sendSettings(upData,id).then(res => {
+        sendSettings(upData,patientInfo.id).then(res => {
             console.log(res);
         }).catch(err => {
             console.log(err);
@@ -43,12 +44,8 @@ function EditProfile() {
     
     useEffect(() => {
         
-        fetch(`${URL}${END_POINT.PROFILE}/${id}`, {
-            headers: { "Content-Type": "application/json" },
-            method: `GET`,
-            credentials: "include",
-        }).then(res => res.json())
-            .then(data => {
+       
+        getData(`${URL}${END_POINT.PROFILE}/${patientInfo.id}`).then(data => {
                 setData({...data.data})
             }).catch(err => {
                 console.log(err);

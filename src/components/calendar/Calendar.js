@@ -1,7 +1,7 @@
 
 import { useEffect, useState, } from 'react';
 import { Link } from 'react-router-dom';
-import { firstDates, next, prev } from "./calendarFn";
+import { firstDates, next, prev, today } from "./calendarFn";
 import calcHours from "./calcHours";
 import './Calendar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,6 +12,7 @@ function Calendar(props) {
     let rightArrow = <FontAwesomeIcon icon={faChevronCircleRight} />;
     let leftArrow = <FontAwesomeIcon icon={faChevronCircleLeft} />;
 
+    console.log(props);
 
     const [dayOne, setDayOne] = useState('');
     const [dayTwo, setDayTwo] = useState('');
@@ -24,13 +25,18 @@ function Calendar(props) {
     const [hours, setHours] = useState([]);
     const [hoursSec, setHoursSec] = useState([]);
     const [hoursThr, setHoursThr] = useState([]);
-
+    const [btnBack,setBtnBack] = useState(false);
 
 
     const nextDate = () => {
 
 
         const { dateText, dateThree, dateTwo, dayOne, dayThree, dayTwo } = next();
+        
+        if(dateText !== today) {
+            setBtnBack(true);
+        }
+
         setDayOne(dayOne);
         setDayTwo(dayTwo);
         setDayThree(dayThree);
@@ -62,7 +68,13 @@ function Calendar(props) {
     };
 
     const prevDate = () => {
+
         const { dateText, dateThree, dateTwo, dayOne, dayThree, dayTwo } = prev();
+        
+        if(dateText === today) {
+            setBtnBack(false)
+        }
+        
         setDayOne(dayOne);
         setDayTwo(dayTwo);
         setDayThree(dayThree);
@@ -115,7 +127,7 @@ function Calendar(props) {
                     <h4>{dateOne}</h4>
                     <div className="hours_calendar">
                         {hours.map((el, index) =>
-                            <Link to="/login/save-time/make-appointment" key={index}>{el}</Link>
+                            <Link to={`/login/make-appointment/${el}`} key={index}>{el}</Link>
                         )}
                     </div>
                 </div>
@@ -124,7 +136,7 @@ function Calendar(props) {
                     <h4>{dateTwo}</h4>
                     <div className="hours_calendar">
                         {hoursSec.map((el, index) =>
-                            <Link to="/login/save-time/make-appointment" key={index + 1}>{el}</Link>
+                            <Link to={`/login/make-appointment/${el}`} key={index + 1}>{el}</Link>
                         )}
                     </div>
                 </div>
@@ -133,14 +145,14 @@ function Calendar(props) {
                     <h4>{dateThree}</h4>
                     <div className="hours_calendar">
                         {hoursThr.map((el, index) =>
-                            <Link to="/login/save-time/make-appointment" key={index + 2}>{el}</Link>
+                            <Link to={`/login/make-appointment/${el}`} key={index + 2}>{el}</Link>
                         )}
                     </div>
                 </div>
 
             </div>
             <div className="btn_calendar">
-                <span className="btn_next-date" onClick={() => prevDate()}>{leftArrow}</span>
+               {btnBack  ? <span className="btn_next-date" onClick={() => prevDate()}>{leftArrow}</span> : <span></span> }
                 <span className="btn_prev-date" onClick={() => nextDate()}>{rightArrow}</span>
             </div>
         </>

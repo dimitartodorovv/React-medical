@@ -2,7 +2,7 @@ import {useState,useEffect} from "react";
 import {useLocation} from "react-router-dom";
 import Calendar from "../../calendar/Calendar";
 import Information from "../savetime/Information";
-
+import { getData } from "../../data/dataAction"; 
 import {URL,END_POINT} from "../../../config/configVar";
 
 import './SaveTime.css';
@@ -15,18 +15,10 @@ function SaveTime() {
     const path = direction.pathname.split("/");
     const [oneDoc,setAOneDoc] = useState([]);
     
-    const pathTodoc = `${URL}${END_POINT.SEARCHDOCTORS}/${path[3]}`;
-        
-    console.log(oneDoc);
-
     useEffect(() => {
     
-        fetch(pathTodoc, {
-            headers: { "Content-Type": "application/json" },
-            method: `GET`,
-            credentials: "include",
-        }).then(res => res.json())
-            .then(data => {
+       
+        getData(`${URL}${END_POINT.SEARCHDOCTORS}/${path[3]}`).then(data => {
                 console.log(data);
                 setAOneDoc({...data.data})
             }).catch(err => {

@@ -7,11 +7,11 @@ import SaveTime from "../components/loggedUser/savetime/SaveTime";
 import SearchSpec from "../components/loggedUser/findDoctor/findWithSpecialty/FindWithSpecialty";
 import ErrorPage from "../components/ErrorPage";
 import EditProfile from "../components/loggedUser/profile/EditProfile";
-import React from "react";
-
+import MakeAppointment from "../components/loggedUser/makeAppointment/MakeAppointment";
+import { UserInfo } from "../components/pationtContext";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-const ApplicationContext = React.createContext();
+
 
 function IsLoged(props) {
     
@@ -20,7 +20,7 @@ function IsLoged(props) {
         <Router>  
             <Navigation />
             <Switch>
-                <ApplicationContext.Provider value="">
+                <UserInfo>
                 <Route exact path="/login">
                     <NewHome />
                 </Route>
@@ -30,13 +30,16 @@ function IsLoged(props) {
                 <Route path="/login/find-doctor">
                     <SearchSpec />
                 </Route>
-                <Route path="/login/save-time/:userID">
+                <Route  path="/login/save-time/:userID">
                     <SaveTime /> 
                 </Route>
                 <Route path="/login/profile/edit">
                     <EditProfile />
                 </Route>
-                </ApplicationContext.Provider>
+                <Route exact path="/login/make-appointment/:hours">
+                    <MakeAppointment />
+                </Route>
+                </UserInfo>
                 <Route path="*">
                     <ErrorPage />
                 </Route>
@@ -46,4 +49,6 @@ function IsLoged(props) {
 
 }
 
-export {IsLoged, ApplicationContext};
+export {
+    IsLoged
+};

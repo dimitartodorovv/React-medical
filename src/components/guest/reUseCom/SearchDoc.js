@@ -1,13 +1,15 @@
 
 import imgDocAvatar from "../../../img/doctor-character-background_1270-84.jpg";
-import {Link} from "react-router-dom";
+import { PatientContext } from "../../pationtContext";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import "./SearchDoc.css";
 
 function LoadDocFromData(props) {
-   
-    const logUser = JSON.parse(localStorage.getItem("logedUser"));
-    console.log(props);
-   
+    
+    const [patientInfo] = useContext(PatientContext);
+
+  
     return (
         props.docData.map(doctor =>
                 
@@ -19,7 +21,7 @@ function LoadDocFromData(props) {
                 <div className="left-side-spec">
                     <h1>{doctor.name}</h1>
                     <h3>{doctor.specialty} - {doctor.working}</h3>
-                   {logUser ?  <Link  className="find_btn-spec" to={`/login/save-time/${doctor._id}`}>make an appointment</Link> : <p className="reg-title">need registration if you want save time</p>}            
+                   {patientInfo ?  <Link  className="find_btn-spec" to={`/login/save-time/${doctor._id}`}>make an appointment</Link> : <p className="reg-title">need registration if you want save time</p>}            
                 </div>
 
             </div>

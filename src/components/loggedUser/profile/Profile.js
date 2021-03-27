@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faFlask, faFileAlt, faHistory } from '@fortawesome/free-solid-svg-icons';
 import imageAvatar from "../../../img/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582-removebg-preview.png";
 import {URL,END_POINT} from "../../../config/configVar";
+import { getData } from "../../data/dataAction";
 import { useState, useEffect } from "react";
 
 function Profile({ history, handleLogin }) {
@@ -30,12 +31,8 @@ function Profile({ history, handleLogin }) {
     
     useEffect(() => {
 
-        fetch(`${URL}${END_POINT.PROFILE}/${id}`, {
-            headers: { "Content-Type": "application/json" },
-            method: `GET`,
-            credentials: "include",
-        }).then(res => res.json())
-            .then(data => {
+       
+        getData(`${URL}${END_POINT.PROFILE}/${id}`).then(data => {
                 setDataInfo({...data.data})
             }).catch(err => {
                 console.log(err);

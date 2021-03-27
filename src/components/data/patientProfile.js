@@ -2,8 +2,6 @@ import {URL,END_POINT} from '../../config/configVar';
 
 function sendSettings(data, id) {
 
-
-
     const result = fetch(`${URL}${END_POINT.EDIT_PROFILE}/${id}`,{
         headers: {"Content-Type": "application/json"},
         method: "POST",

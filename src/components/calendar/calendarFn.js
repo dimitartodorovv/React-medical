@@ -30,12 +30,13 @@
         "November": "11",
         "December": "12",
     };
-    //     let dayToday =  days[day];
-    // let today = `${dates[date]}/${months[month]}/${year}`
+        // let dayToday =  days[day];
+        let today = `${dates[date]}/${months[month]}/${year}`;
     // let today = `${datesForData[date]}/${monthForData[month]}/${year}`
 
 
     myDate = new Date(myDate.getFullYear(), myDate.getMonth(), myDate.getDate() );
+    console.log(myDate);
     secDates = new Date(secDates.getFullYear(), secDates.getMonth(), secDates.getDate() + 1);
     thirdDate = new Date(thirdDate.getFullYear(), thirdDate.getMonth(), thirdDate.getDate() + 2);
 
@@ -157,5 +158,6 @@ export {
     firstDates,
     monthForData,
     next,
-    prev
+    prev,
+    today
 };

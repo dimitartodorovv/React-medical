@@ -7,7 +7,9 @@ const END_POINT = {
     DOCTORS: "doctors",
     SEARCHDOCTORS: "doctors/search",
     PROFILE: "patient",
-    EDIT_PROFILE: "patient/edit"    
+    EDIT_PROFILE: "patient/edit",
+    APPOINTMENT: "appointment", 
+    DEL_APPOINTMENT_HOUR: "doctors/remove/hour"   
 }
 
 const LIMIT_PAGE = 10;

@@ -1,6 +1,6 @@
-import "./Home.css";
 import imgDocPet from "../../../img/Medical-Examination-Market-removebg-preview.png";
 import imgMedRecord from "../../../img/Medical-record-tablet-computer-G-1065782564-web-removebg-preview.png";
+import "./Home.css";
 import {Link} from "react-router-dom";
 
 function Home() {

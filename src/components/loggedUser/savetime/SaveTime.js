@@ -18,9 +18,8 @@ function SaveTime() {
     useEffect(() => {
     
        
-        getData(`${URL}${END_POINT.SEARCHDOCTORS}/${path[3]}`).then(data => {
-                console.log(data);
-                setAOneDoc({...data.data})
+        getData(`${URL}${END_POINT.SEARCHDOCTORS}/${path[3]}`).then(data => {             
+                setAOneDoc(data.data)
             }).catch(err => {
                 console.log(err);
             })

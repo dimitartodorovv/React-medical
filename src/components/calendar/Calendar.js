@@ -1,5 +1,5 @@
 
-import { useEffect, useState, } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { firstDates, next, prev, today } from "./calendarFn";
 import calcHours from "./calcHours";
@@ -11,9 +11,7 @@ function Calendar(props) {
 
     let rightArrow = <FontAwesomeIcon icon={faChevronCircleRight} />;
     let leftArrow = <FontAwesomeIcon icon={faChevronCircleLeft} />;
-
-    console.log(props);
-
+   
     const [dayOne, setDayOne] = useState('');
     const [dayTwo, setDayTwo] = useState('');
     const [dayThree, setDayThree] = useState('');
@@ -22,89 +20,20 @@ function Calendar(props) {
     const [dateTwo, setDateTwo] = useState('');
     const [dateThree, setDateThree] = useState('');
 
-    const [hours, setHours] = useState([]);
-    const [hoursSec, setHoursSec] = useState([]);
-    const [hoursThr, setHoursThr] = useState([]);
-    const [btnBack,setBtnBack] = useState(false);
+    const [hours, setHours] = useState({
+        date: "",
+        hour: []
+    });
+    const [hoursSec, setHoursSec] = useState({
+        date: "",
+        hour: []
+    });
+    const [hoursThr, setHoursThr] = useState({
+        date: "",
+        hour: []
+    });
 
-
-    const nextDate = () => {
-
-
-        const { dateText, dateThree, dateTwo, dayOne, dayThree, dayTwo } = next();
-        
-        if(dateText !== today) {
-            setBtnBack(true);
-        }
-
-        setDayOne(dayOne);
-        setDayTwo(dayTwo);
-        setDayThree(dayThree);
-
-        setDateOne(dateText);
-        setDateTwo(dateTwo);
-        setDateThree(dateThree);
-        setHours([]);
-        setHoursSec([]);
-        setHoursThr([]);
-
-        const compareDate = props.oneDoc.workDates[0].date;
-        const hour = props.oneDoc.workHours[0].hours;
-
-        const hoursCalc = calcHours(dateText, dateTwo, dateThree);
-
-
-        if (compareDate.includes(hoursCalc.newData)) {
-            setHours(hour)
-        }
-        if (compareDate.includes(hoursCalc.newData1)) {
-            setHoursSec(hour)
-        }
-        if (compareDate.includes(hoursCalc.newData2)) {
-            setHoursThr(hour)
-        }
-
-
-    };
-
-    const prevDate = () => {
-
-        const { dateText, dateThree, dateTwo, dayOne, dayThree, dayTwo } = prev();
-        
-        if(dateText === today) {
-            setBtnBack(false)
-        }
-        
-        setDayOne(dayOne);
-        setDayTwo(dayTwo);
-        setDayThree(dayThree);
-
-        setDateOne(dateText);
-        setDateTwo(dateTwo);
-        setDateThree(dateThree);
-        setHours([]);
-        setHoursSec([]);
-        setHoursThr([]);
-
-
-        const compareDate = props.oneDoc.workDates[0].date;
-        const hour = props.oneDoc.workHours[0].hours;
-
-        const hoursCalc = calcHours(dateText, dateTwo, dateThree);
-
-
-        if (compareDate.includes(hoursCalc.newData)) {
-            setHours(hour)
-        }
-        if (compareDate.includes(hoursCalc.newData1)) {
-            setHoursSec(hour)
-        }
-        if (compareDate.includes(hoursCalc.newData2)) {
-            setHoursThr(hour)
-        }
-    };
-
-  
+    const [btnBack, setBtnBack] = useState(false);
 
     useEffect(() => {
 
@@ -117,7 +46,132 @@ function Calendar(props) {
         setDateOne(dateText);
         setDateTwo(dateTwo);
         setDateThree(dateThree);
-    }, []);
+       
+        if (props.oneDoc.length === undefined) {
+
+            const compareDate = props.oneDoc.workDates;
+            const hour = props.oneDoc.workHours;
+
+            const hoursCalc = calcHours(dateText, dateTwo, dateThree);
+
+
+            if (compareDate.includes(hoursCalc.newData)) {
+                let dateChangeFormat = hoursCalc.newData.replaceAll("/", ":");
+                setHours({ hour: hour, date: dateChangeFormat })
+            }
+            if (compareDate.includes(hoursCalc.newData1)) {
+                let dateChangeFormat = hoursCalc.newData1.replaceAll("/", ":");
+                setHoursSec({ hour: hour, date: dateChangeFormat })
+            }
+            if (compareDate.includes(hoursCalc.newData2)) {
+                let dateChangeFormat = hoursCalc.newData2.replaceAll("/", ":");
+                setHoursThr({ hour: hour, date: dateChangeFormat })
+            }
+        }
+    }, [props]);
+
+    const nextDate = () => {
+
+
+        const { dateText, dateThree, dateTwo, dayOne, dayThree, dayTwo } = next();
+
+        if (dateText !== today) {
+            setBtnBack(true);
+        }
+
+        setDayOne(dayOne);
+        setDayTwo(dayTwo);
+        setDayThree(dayThree);
+
+        setDateOne(dateText);
+        setDateTwo(dateTwo);
+        setDateThree(dateThree);
+        setHours({
+            date: "",
+            hour: []
+        });
+        setHoursSec({
+            date: "",
+            hour: []
+        });
+        setHoursThr({
+            date: "",
+            hour: []
+        });
+
+        const compareDate = props.oneDoc.workDates;
+        const hour = props.oneDoc.workHours;
+
+        const hoursCalc = calcHours(dateText, dateTwo, dateThree);
+
+
+        if (compareDate.includes(hoursCalc.newData)) {
+            let dateChangeFormat = hoursCalc.newData.replaceAll("/", ":");
+            setHours({ hour: hour, date: dateChangeFormat });
+        }
+        if (compareDate.includes(hoursCalc.newData1)) {
+            let dateChangeFormat = hoursCalc.newData1.replaceAll("/", ":");
+            setHoursSec({ hour: hour, date: dateChangeFormat });
+        }
+        if (compareDate.includes(hoursCalc.newData2)) {
+            let dateChangeFormat = hoursCalc.newData2.replaceAll("/", ":");
+            setHoursThr({ hour: hour, date: dateChangeFormat });
+        }
+
+
+    };
+
+    const prevDate = () => {
+
+        const { dateText, dateThree, dateTwo, dayOne, dayThree, dayTwo } = prev();
+
+        if (dateText === today) {
+            setBtnBack(false)
+        }
+
+        setDayOne(dayOne);
+        setDayTwo(dayTwo);
+        setDayThree(dayThree);
+
+        setDateOne(dateText);
+        setDateTwo(dateTwo);
+        setDateThree(dateThree);
+        setHours({
+            date: "",
+            hour: []
+        });
+        setHoursSec({
+            date: "",
+            hour: []
+        });
+        setHoursThr({
+            date: "",
+            hour: []
+        });
+
+
+        const compareDate = props.oneDoc.workDates;
+        const hour = props.oneDoc.workHours;
+
+        const hoursCalc = calcHours(dateText, dateTwo, dateThree);
+
+
+        if (compareDate.includes(hoursCalc.newData)) {
+            let dateChangeFormat = hoursCalc.newData.replaceAll("/", ":");
+            setHours({ hour: hour, date: dateChangeFormat })
+        }
+        if (compareDate.includes(hoursCalc.newData1)) {
+            let dateChangeFormat = hoursCalc.newData1.replaceAll("/", ":");
+            setHoursSec({ hour: hour, date: dateChangeFormat })
+        }
+        if (compareDate.includes(hoursCalc.newData2)) {
+            let dateChangeFormat = hoursCalc.newData2.replaceAll("/", ":");
+            setHoursThr({ hour: hour, date: dateChangeFormat })
+        }
+    };
+
+
+
 
     return (
         <>
@@ -126,8 +180,9 @@ function Calendar(props) {
                     <h4>{dayOne}</h4>
                     <h4>{dateOne}</h4>
                     <div className="hours_calendar">
-                        {hours.map((el, index) =>
-                            <Link to={`/login/make-appointment/${el}`} key={index}>{el}</Link>
+                        {hours.hour.map((el, index) =>
+
+                            <Link to={`/login/make-appointment/${el}/${hours.date}`} key={index}>{el}</Link>
                         )}
                     </div>
                 </div>
@@ -135,8 +190,8 @@ function Calendar(props) {
                     <h4>{dayTwo}</h4>
                     <h4>{dateTwo}</h4>
                     <div className="hours_calendar">
-                        {hoursSec.map((el, index) =>
-                            <Link to={`/login/make-appointment/${el}`} key={index + 1}>{el}</Link>
+                        {hoursSec.hour.map((el, index) =>
+                            <Link to={`/login/make-appointment/${el}/${hours.date}`} key={index + 1}>{el}</Link>
                         )}
                     </div>
                 </div>
@@ -144,15 +199,15 @@ function Calendar(props) {
                     <h4>{dayThree}</h4>
                     <h4>{dateThree}</h4>
                     <div className="hours_calendar">
-                        {hoursThr.map((el, index) =>
-                            <Link to={`/login/make-appointment/${el}`} key={index + 2}>{el}</Link>
+                        {hoursThr.hour.map((el, index) =>
+                            <Link to={`/login/make-appointment/${el}/${hours.date}`} key={index + 2}>{el}</Link>
                         )}
                     </div>
                 </div>
 
             </div>
             <div className="btn_calendar">
-               {btnBack  ? <span className="btn_next-date" onClick={() => prevDate()}>{leftArrow}</span> : <span></span> }
+                {btnBack ? <span className="btn_next-date" onClick={() => prevDate()}>{leftArrow}</span> : <span></span>}
                 <span className="btn_prev-date" onClick={() => nextDate()}>{rightArrow}</span>
             </div>
         </>

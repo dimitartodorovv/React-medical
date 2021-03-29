@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import  { useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import "./Header.css";
 import imgMed from "../../../img/png-clipart-staff-of-hermes-caduceus-as-a-symbol-of-medicine-physician-cancer-astrology-miscellaneous-text-removebg-preview.png";
@@ -47,10 +47,10 @@ function Header() {
     
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+        document.addEventListener('scroll', handleScroll);
        
         return () => {
-            window.removeEventListener('scroll', () => handleScroll);
+            document.removeEventListener('scroll', handleScroll);
         };
     }, []);
 

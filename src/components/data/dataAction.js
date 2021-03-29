@@ -1,5 +1,4 @@
 
-
 function getData(url) {
     
    let result = fetch(url, {
@@ -20,7 +19,7 @@ function getData(url) {
 function appointmentMake(url,data) {
     
     let result = fetch(url, {
-        headers: {"Content-Type": "appliocation/json"},
+        headers: {"Content-Type": "application/json"},
         method: "POST",
         credentials: "include",
         body: JSON.stringify(data)
@@ -30,6 +29,7 @@ function appointmentMake(url,data) {
 
     return result
 };
+
 
 export {
     getData,

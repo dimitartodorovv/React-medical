@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-// import {ApplicationContext} from "../../../../pages/IsLog";
 import SearchDoc from "../../../guest/reUseCom/SearchDoc";
 import filterDoc from "../../../service/filterDoc";
 import { URL, END_POINT, LIMIT_PAGE } from "../../../../config/configVar";
@@ -25,7 +24,7 @@ function Specialty() {
 
     const [filtData, setFiltData] = useState([]);
     const [checkData, setCheckData] = useState(false);
-    const [error, setError] = useState("");
+    const [, setError] = useState("");
 
     const [specialty, setSpecialty] = useState();
     const [town, setTown] = useState();
@@ -47,12 +46,12 @@ function Specialty() {
                 return
             }
             setCheckData(true);
-            setFiltData(newData)
+            setFiltData(oldData => oldData = newData)
 
         }
     }
 
-    const { next, prev, jump, currentData, currentPage, maxPage } = usePaginations(filtData, LIMIT_PAGE);
+    const { next, prev, currentData, currentPage, maxPage } = usePaginations(filtData, LIMIT_PAGE);
 
     const dataPag = currentData();
 
@@ -67,14 +66,14 @@ function Specialty() {
 
     useEffect(() => {
 
-
+    
         
         getData(`${URL}${END_POINT.DOCTORS}`).then(data => {
                 
             if(data.error) {
                 setError(data.error);
             }
-
+          
             setFiltData(data.data);
 
                 if (pathChecker.length > 3) {
@@ -85,7 +84,7 @@ function Specialty() {
                         setCheckData(false);
                         return
                     }
-                    setFiltData(newData);
+                    setFiltData(oldData => oldData = newData);
                     setCheckData(true);
                 } else {
                     setCheckData(true);
@@ -95,7 +94,7 @@ function Specialty() {
                 setError(err);
             })
 
-    }, [path, specialty, town])
+    }, [])
 
 
 

@@ -1,4 +1,5 @@
 
+import { useState, useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { signOut } from "../../data/dataAuth";
 import "./Profile.css";
@@ -7,7 +8,6 @@ import { faCog, faFlask, faFileAlt, faHistory } from '@fortawesome/free-solid-sv
 import imageAvatar from "../../../img/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582-removebg-preview.png";
 import {URL,END_POINT} from "../../../config/configVar";
 import { getData } from "../../data/dataAction";
-import { useState, useEffect } from "react";
 
 function Profile({ history, handleLogin }) {
 

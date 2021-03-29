@@ -1,8 +1,8 @@
 
-import "./FindDoctor.css"
-import superDoc from "../../../img/super-doctor-cartoon-character-superhero-doctor-with-hero-cloaks-healthcare-vector-concept-medical-concept-first-aid-182377164-removebg-preview.png";
 import { useState } from "react";
 import { useFetch } from "../../data/dataCustomHook";
+import "./FindDoctor.css"
+import superDoc from "../../../img/super-doctor-cartoon-character-superhero-doctor-with-hero-cloaks-healthcare-vector-concept-medical-concept-first-aid-182377164-removebg-preview.png";
 import { URL, END_POINT } from "../../../config/configVar";
 import filterDoc from "../../service/filterDoc";
 import SearchNotFound from "../reUseCom/SearchNotFound";

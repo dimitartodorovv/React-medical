@@ -36,7 +36,6 @@
 
 
     myDate = new Date(myDate.getFullYear(), myDate.getMonth(), myDate.getDate() );
-    console.log(myDate);
     secDates = new Date(secDates.getFullYear(), secDates.getMonth(), secDates.getDate() + 1);
     thirdDate = new Date(thirdDate.getFullYear(), thirdDate.getMonth(), thirdDate.getDate() + 2);
 

@@ -1,6 +1,6 @@
-import "./Footer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import "./Footer.css"
 import {Link} from "react-router-dom";
 
 function Footer() {

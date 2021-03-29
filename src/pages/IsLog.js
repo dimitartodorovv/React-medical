@@ -8,8 +8,10 @@ import SearchSpec from "../components/loggedUser/findDoctor/findWithSpecialty/Fi
 import ErrorPage from "../components/ErrorPage";
 import EditProfile from "../components/loggedUser/profile/EditProfile";
 import MakeAppointment from "../components/loggedUser/makeAppointment/MakeAppointment";
+import Reminder from "../components/loggedUser/reminder/Reminder";
 import { UserInfo } from "../components/pationtContext";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 
 
 
@@ -36,8 +38,11 @@ function IsLoged(props) {
                 <Route path="/login/profile/edit">
                     <EditProfile />
                 </Route>
-                <Route exact path="/login/make-appointment/:hours">
+                <Route exact path="/login/make-appointment/:hours/:date">
                     <MakeAppointment />
+                </Route>
+                <Route path="/login/reminder">
+                    <Reminder />
                 </Route>
                 </UserInfo>
                 <Route path="*">

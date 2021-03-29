@@ -1,7 +1,7 @@
 
+import { useContext } from "react";
 import imgDocAvatar from "../../../img/doctor-character-background_1270-84.jpg";
 import { PatientContext } from "../../pationtContext";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./SearchDoc.css";
 

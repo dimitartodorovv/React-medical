@@ -1,5 +1,5 @@
+import { useState } from "react";
 import { signIn } from "../../data/dataAuth";
-import { useState, useEffect } from "react";
 
 function Login(props) {
 
@@ -11,7 +11,7 @@ function Login(props) {
 
     const [messages, setMessages] = useState("");
     const [showM, setShowMessage] = useState(false);
-    const [clickBtn,setclickBtn] = useState(false);
+    // const [clickBtn,setclickBtn] = useState(false);
 
     const handleFormData = (e) => {
         const name = e.target.name;
@@ -32,23 +32,24 @@ function Login(props) {
                     }, 2000);
                     return;
                 }
-             
-                setclickBtn(true)
+                
+               
+                // setclickBtn(true)
                  localStorage.setItem("logedUser", JSON.stringify(data))
-                setData({ email: '', password: '', rePass: '' })
+                // setData({ email: '', password: '', rePass: '' })
             })
           
-           
-        }
-    };
-
-    useEffect(() => {
-        
-        if(clickBtn){
             props.handleLogin.handleLoged(true);
         }
+    };
+    //CHANGE USEEFFECT
+    // useEffect(() => {
         
-    },[props,clickBtn])
+    //     if(clickBtn){
+    //         props.handleLogin.handleLoged(true);
+    //     }
+        
+    // },[props,clickBtn])
 
     return (
         <section className="reg">

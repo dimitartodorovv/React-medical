@@ -7,19 +7,20 @@ import { URL, END_POINT, LIMIT_PAGE } from "../../../../config/configVar";
 import SearchNotFound from "../../../guest/reUseCom/SearchNotFound";
 import SearchAreaDoc from "../../../guest/reUseCom/SearchAreaDoc";
 import usePaginations from "../../pagination/pagination";
-import {getData} from "../../../data/dataAction";
+import { getData } from "../../../data/dataAction";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleRight, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import './FindWithSpecialty.css';
 
 
+
 function Specialty() {
 
     const path = useLocation();
-    const pathChecker = path.pathname.split("/");
-
-    const  rightArrow = <FontAwesomeIcon icon={faChevronCircleRight} />;
-    const  leftArrow = <FontAwesomeIcon icon={faChevronCircleLeft} />;
+    const [,,,pathChecker] = path.pathname.split("/");
+  
+    const rightArrow = <FontAwesomeIcon icon={faChevronCircleRight} />;
+    const leftArrow = <FontAwesomeIcon icon={faChevronCircleLeft} />;
 
 
     const [filtData, setFiltData] = useState([]);
@@ -62,39 +63,48 @@ function Specialty() {
     const prevPage = () => {
         prev();
     }
+    
 
-
+console.log(pathChecker);
     useEffect(() => {
 
-    
-        
+
+        console.log(1);
         getData(`${URL}${END_POINT.DOCTORS}`).then(data => {
-                
-            if(data.error) {
+
+            if (data.error) {
                 setError(data.error);
             }
-          
-            setFiltData(data.data);
-
-                if (pathChecker.length > 3) {
-                  
-                    let newData = filterDoc(pathChecker[3], null, data);
+        
+            switch (pathChecker) {
+                case "dermatology":
+                case "cardiology":
+                case "homeopathy":
+                case "neurology":
+                case "ent":
+                case "pediatrics":
+                case "opthalmology":
+                    let newData = filterDoc(pathChecker, null, data);
 
                     if (!newData) {
+                        setFiltData(data.data);
                         setCheckData(false);
                         return
                     }
                     setFiltData(oldData => oldData = newData);
                     setCheckData(true);
-                } else {
-                    setCheckData(true);
-                }
+                    break;
+            
+                default:
+                    setFiltData(data.data);
+                    setCheckData(true)
+                    break;
+            }
+        }).catch(err => {
+            setError(err);
+        })
 
-            }).catch(err => {
-                setError(err);
-            })
-
-    }, [])
+    }, [pathChecker])
 
 
 

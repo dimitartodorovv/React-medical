@@ -6,7 +6,9 @@
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%) 
+    transform: translate(-50%, -50%); 
+    border-radius: 12px;
+    box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.4);
 }
 
 .user_prof-form {
@@ -15,11 +17,11 @@
     justify-content: center;
     text-align: center;
     align-items: center;
-
+    margin: 10px;
 }
 
 .user_prof-form label {
-    padding: 17px;
+    padding: 10px;
 }
 
 .user_prof-form input {

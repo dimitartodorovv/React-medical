@@ -29,16 +29,16 @@ function Profile({ history, handleLogin }) {
         userID: "Not set"
     });
     
+
     useEffect(() => {
 
-       
         getData(`${URL}${END_POINT.PROFILE}/${id}`).then(data => {
                 setDataInfo({...data.data})
             }).catch(err => {
                 console.log(err);
             })
       
-    },[]);
+    },[id]);
 
     const logoutApp = () => {
 

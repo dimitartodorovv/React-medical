@@ -7,25 +7,30 @@ import { URL, END_POINT } from "../../../config/configVar";
 function Reminder() {
 
     const [appoint, setAppoitnt] = useState({});
-    const [patientInfo, setPatientInfo] = useContext(PatientContext);
+    const [showField,setShowField] = useState(true);
+    const [patientInfo] = useContext(PatientContext);
 
-    console.log(appoint);
+    console.log(patientInfo);
     useEffect(() => {
+        
         getData(`${URL}${END_POINT.APPOINTMENT}/${patientInfo.id}`)
             .then(data => {
+             
                 if (data.error) {
-                    console.log(data.error);
+                 
+                    setShowField(false);
+                   
                     return
                 }
-                console.log(data);
-                // setAppoitnt(data)
+                setShowField(true)
+                setAppoitnt(data)
             })
-    }, [])
+    }, [patientInfo.id])
 
     return (
         <div className="wrap">
             <h1 className="title_card">Reminder</h1>
-            {appoint ? <FieldInf info={appoint} /> : <EmptyInfo />}
+            {showField ? <FieldInf info={appoint} /> : <EmptyInfo />}
         </div>
     );
 }
@@ -42,11 +47,11 @@ const FieldInf = (props) => {
             <div className="details_card">
                 <div className="details__inner">
                     <h2>Details:</h2>
-                    <h4>Doctor</h4>
+                    <h4>Doctor:</h4>
                     <p>{props.info.doctorName}</p>
-                    <h4>Specialty</h4>
+                    <h4>Specialty:</h4>
                     <p>{props.info.specialty}</p>
-                    <h4>Reason to visit</h4>
+                    <h4>Reason to visit:</h4>
                     <p>{props.info.visit}</p>
                 </div>
             </div>

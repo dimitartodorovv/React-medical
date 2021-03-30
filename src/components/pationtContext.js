@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react"
 
 const PatientContext = React.createContext();
@@ -6,10 +7,11 @@ function UserInfo(props) {
   
     const [patientInfo,setPatientInf] = useState({})
 
-    const user = JSON.parse(localStorage.getItem("logedUser"));
-    
     useEffect(() => {
-        setPatientInf({...user})
+        
+        const user = JSON.parse(localStorage.getItem("logedUser"));
+
+        setPatientInf(user)
     },[])
 
     return (

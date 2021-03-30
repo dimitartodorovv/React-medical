@@ -1,8 +1,9 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import { PatientContext } from "../../pationtContext";
 import { appointmentMake } from "../../data/dataAction";
 import {URL,END_POINT} from "../../../config/configVar";
+import "./MakeAppointment.css";
 
 function MakeAppointment() {
 
@@ -10,7 +11,7 @@ function MakeAppointment() {
     const history = useHistory();
     const dateAppoitment = path.pathname.split('/');
     const changeFormatDate = dateAppoitment[4].replaceAll(":","/");
-    const [patientInfo,setPatientInfo] = useContext(PatientContext);
+    const [patientInfo] = useContext(PatientContext);
     const [reasonVisit,setReasonVisit] = useState('');
    
     const handleVisitChoice = (e) => {
@@ -55,7 +56,7 @@ function MakeAppointment() {
    }
 
     return(
-        <div style={{margin: "260px"}}>
+        <div className="wrap_appoitnemnt-res">
             <h4>Appoitment:</h4>
             <h3>Date: {changeFormatDate}</h3>
             <h3>Hour: {dateAppoitment[3]}</h3>

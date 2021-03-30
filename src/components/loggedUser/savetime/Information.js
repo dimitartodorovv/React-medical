@@ -8,11 +8,10 @@ function Information(props) {
 
     
     const [location,setLocation] = useState('');
-    const [patientInfo,setPatientInfo] = useContext(PatientContext);
+    const [,setPatientInfo] = useContext(PatientContext);
 
-  
     useEffect(() => {
-
+       
         let infoDoc = {
             name: props.oneDoc.name,
             specialty: props.oneDoc.specialty,
@@ -35,7 +34,7 @@ function Information(props) {
             }
     
 
-    }, [props])
+    }, [setPatientInfo,props])
 
     return (
         <>

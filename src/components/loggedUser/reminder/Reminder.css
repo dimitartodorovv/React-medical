@@ -1,6 +1,6 @@
 
 .wrap {
-    margin: 30px  280px;
+    margin: 20px  280px;
 }
 
 .title_card {
@@ -62,4 +62,8 @@
   
   .details__inner {
     padding: 15px 30px;
+  }
+
+  .details__inner p {
+    font-size: 1.5rem;
   }

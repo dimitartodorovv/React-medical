@@ -21,7 +21,7 @@ function EditProfile() {
     });
     const [patientInfo]= useContext(PatientContext)
       
-  
+  console.log(patientInfo);
     const changeUserProf = (e) =>  {
 
             setData({...data,[e.target.name]: e.target.value});
@@ -44,7 +44,7 @@ function EditProfile() {
     
     useEffect(() => {
         
-       
+      
         getData(`${URL}${END_POINT.PROFILE}/${patientInfo.id}`).then(data => {
                 setData({...data.data})
             }).catch(err => {
@@ -52,7 +52,7 @@ function EditProfile() {
             })
 
 
-    },[])
+    },[patientInfo])
 
     return (
         <div className="user_prof-data">

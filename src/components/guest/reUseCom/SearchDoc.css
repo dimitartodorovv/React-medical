@@ -1,9 +1,9 @@
 .find_doc-spec {
     display: flex;
-    flex-direction: row;
-    border: 1px solid black;
+    flex-direction: row;   
     border-radius: 12px;
-    margin: 13px;
+    box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.4);
+    margin: 20px;
 }
 
 .find_doc-spec img {
@@ -11,6 +11,7 @@
     width: 200px;
     height: 200px;
     border-radius: 12px;
+    box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.2);
 }
 
 .left-side-spec {

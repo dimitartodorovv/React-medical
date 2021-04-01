@@ -9,8 +9,7 @@ function Reminder() {
     const [appoint, setAppoitnt] = useState({});
     const [showField,setShowField] = useState(true);
     const [patientInfo] = useContext(PatientContext);
-
-    console.log(patientInfo);
+    
     useEffect(() => {
         
         getData(`${URL}${END_POINT.APPOINTMENT}/${patientInfo.id}`)

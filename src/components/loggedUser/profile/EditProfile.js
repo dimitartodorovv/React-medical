@@ -21,7 +21,6 @@ function EditProfile() {
     });
     const [patientInfo]= useContext(PatientContext)
       
-  console.log(patientInfo);
     const changeUserProf = (e) =>  {
 
             setData({...data,[e.target.name]: e.target.value});

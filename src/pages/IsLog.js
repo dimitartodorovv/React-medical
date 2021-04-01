@@ -1,5 +1,7 @@
 
 
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import { UserInfo } from "../components/pationtContext";
 import NewHome from "../components/loggedUser/newHome/HomeLog";
 import Navigation from "../components/loggedUser/navBar/Navigation";
 import Profile from "../components/loggedUser/profile/Profile";
@@ -9,20 +11,17 @@ import ErrorPage from "../components/ErrorPage";
 import EditProfile from "../components/loggedUser/profile/EditProfile";
 import MakeAppointment from "../components/loggedUser/makeAppointment/MakeAppointment";
 import Reminder from "../components/loggedUser/reminder/Reminder";
-import { UserInfo } from "../components/pationtContext";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
 
 
 function IsLoged(props) {
     
-
     return (
         <Router>  
             <Navigation />
             <Switch>
-                <UserInfo>
+                {/* <UserInfo> */}
                 <Route exact path="/login">
                     <NewHome />
                 </Route>
@@ -44,7 +43,7 @@ function IsLoged(props) {
                 <Route path="/login/reminder">
                     <Reminder />
                 </Route>
-                </UserInfo>
+                {/* </UserInfo> */}
                 <Route path="*">
                     <ErrorPage />
                 </Route>

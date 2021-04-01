@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { signIn } from "../../data/dataAuth";
+import { PatientContext } from "../../pationtContext";
 
 function Login(props) {
 
@@ -8,6 +9,8 @@ function Login(props) {
         password: '',
         rePass: ''
     });
+
+    const [,setPatientInfo] = useContext(PatientContext);
 
     const [messages, setMessages] = useState("");
     const [showM, setShowMessage] = useState(false);
@@ -24,6 +27,7 @@ function Login(props) {
         if (data.email && data.password && data.rePass) {
 
             signIn(data).then(data => {
+             
                 if (data.error) {
                     setShowMessage(true)
                     setMessages(data.error);
@@ -35,7 +39,9 @@ function Login(props) {
                 
                
                 // setclickBtn(true)
-                 localStorage.setItem("logedUser", JSON.stringify(data))
+                setPatientInfo(data)
+                 localStorage.setItem("logedUser", JSON.stringify(data));
+            
                 // setData({ email: '', password: '', rePass: '' })
             })
           

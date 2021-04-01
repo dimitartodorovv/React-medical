@@ -64,12 +64,8 @@ function Specialty() {
         prev();
     }
     
-
-console.log(pathChecker);
     useEffect(() => {
 
-
-        console.log(1);
         getData(`${URL}${END_POINT.DOCTORS}`).then(data => {
 
             if (data.error) {

@@ -6,6 +6,7 @@ import {useState} from "react";
 
 import IsGuest from "./pages/IsGuest";
 import {IsLoged} from "./pages/IsLog";
+import { UserInfo } from "./components/pationtContext";
  
 
 function App() {
@@ -23,8 +24,13 @@ function App() {
         
         <Router>
            <Switch>
+               <UserInfo>
+                   
             {loged ? <Redirect exact from="/" to="/login" /> : null}   
            {loged ? <Route  path="/login" render={() => <IsLoged isLoged={handleLogin}/>}/> :  <Route  path="/"  render={() => <IsGuest handleLoged={handleLogin}/>} />}
+           
+           </UserInfo >
+
            </Switch>
         </Router>
     );  

@@ -5,17 +5,19 @@ const PatientContext = React.createContext();
 
 function UserInfo(props) {
   
-    const [patientInfo,setPatientInf] = useState({})
+    const [patientInfo,setPatientInfo] = useState({});
 
     useEffect(() => {
         
         const user = JSON.parse(localStorage.getItem("logedUser"));
 
-        setPatientInf(user)
+           
+        setPatientInfo(user);
+
     },[])
 
     return (
-        <PatientContext.Provider value={[patientInfo,setPatientInf]}>
+        <PatientContext.Provider value={[patientInfo,setPatientInfo]}>
             {props.children}
         </PatientContext.Provider>
     );

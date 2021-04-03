@@ -1,8 +1,8 @@
-import {URL,END_POINT} from '../../config/configVar';
 
-function sendSettings(data, id) {
 
-    const result = fetch(`${URL}${END_POINT.EDIT_PROFILE}/${id}`,{
+function updSettings(url,data) {
+
+    const result = fetch(url,{
         headers: {"Content-Type": "application/json"},
         method: "POST",
         credentials: "include",
@@ -14,7 +14,21 @@ function sendSettings(data, id) {
        return result 
 }
 
+function sendSetting(url,data) {
+
+        const result = fetch(url, {
+            headers: {"Content-Type": "application/json"},
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify(data)
+        }).then(res => res.json())
+        .then(data => {return data})
+        .catch(err => {return err})
+
+        return result
+}
 
 export {
-    sendSettings,
+    updSettings,
+    sendSetting,
 }

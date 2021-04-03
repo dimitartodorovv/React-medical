@@ -33,6 +33,16 @@ function Profile({ history, handleLogin }) {
     useEffect(() => {
 
         getData(`${URL}${END_POINT.PROFILE}/${id}`).then(data => {
+            
+            if(data.data == null) {
+                
+                return;
+            }
+            if(data.error) {
+                console.log(data);
+                return
+            }
+          
                 setDataInfo({...data.data})
             }).catch(err => {
                 console.log(err);

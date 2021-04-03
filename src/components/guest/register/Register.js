@@ -3,6 +3,7 @@ import {useHistory, Link} from "react-router-dom"
 import "./Register.css";
 import {makeRegister} from "../../data/dataAuth";
 
+
 function Register() {
 
     const [data,setData] = useState({
@@ -32,7 +33,7 @@ function Register() {
             if(data.email && data.username && data.password && data.rePass){
                
               makeRegister(data).then(data => {
-               
+                 
                 if(data.error) {
                     setShowMessage(true)
                     setMessages(data.error);

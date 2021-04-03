@@ -15,11 +15,12 @@ function SaveTime() {
     const [,,,path] = direction.pathname.split("/");
     const [oneDoc,setAOneDoc] = useState([]);
     
-    
+   
     useEffect(() => {
     
       
-        getData(`${URL}${END_POINT.SEARCHDOCTORS}/${path}`).then(data => {             
+        getData(`${URL}${END_POINT.SEARCHDOCTORS}/${path}`).then(data => {           
+    
                 setAOneDoc(data.data)
             }).catch(err => {
                 console.log(err);

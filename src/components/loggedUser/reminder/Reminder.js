@@ -14,7 +14,9 @@ function Reminder() {
         
         getData(`${URL}${END_POINT.APPOINTMENT}/${patientInfo.id}`)
             .then(data => {
-             
+                if(data == null ) {
+                    return
+                }
                 if (data.error) {
                  
                     setShowField(false);

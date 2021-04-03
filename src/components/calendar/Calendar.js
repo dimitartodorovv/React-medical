@@ -171,7 +171,7 @@ function Calendar(props) {
     };
 
 
-    console.log(hours,hoursSec,hoursThr);
+    
 
     return (
         <>

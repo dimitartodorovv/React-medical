@@ -8,8 +8,8 @@ function Information(props) {
 
     
     const [location,setLocation] = useState('');
-    const [patientInfo,setPatientInfo] = useContext(PatientContext);
-    console.log(patientInfo);
+    const [,setPatientInfo] = useContext(PatientContext);
+    
     useEffect(() => {
        
         let infoDoc = {

@@ -1,7 +1,8 @@
 
 import {useState, useEffect, useContext} from "react";
 import { PatientContext } from "../../pationtContext";
-import {sendSettings} from "../../data/patientProfile";
+import { useHistory } from "react-router-dom";
+import { updSettings, sendSetting } from "../../data/patientProfile";
 import {URL,END_POINT} from "../../../config/configVar";
 import { getData } from "../../data/dataAction";
 import './EditProfile.css';
@@ -9,6 +10,7 @@ import './EditProfile.css';
 function EditProfile() {
 
 
+    const history = useHistory();
     const [data, setData] = useState({
          name: "",
          dateOfBirth: "",
@@ -19,6 +21,7 @@ function EditProfile() {
          hairColor: "",
          userID: ""
     });
+    const [watchForData,setWatchForData] = useState(true);
     const [patientInfo]= useContext(PatientContext)
       
     const changeUserProf = (e) =>  {
@@ -28,24 +31,42 @@ function EditProfile() {
    
     const handleSendUserProf = (e) => {
         e.preventDefault();
+        
+        const upData = {...data, userID: patientInfo.id}
 
+        if(watchForData) {
      
-       const upData = {...data, userID: patientInfo.id}
-     
+            updSettings(`${URL}${END_POINT.EDIT_PROFILE}/${patientInfo.id}`,upData).then(res => {
+    
+                console.log(res);
+                history.push('/login')
+            }).catch(err => {
+                console.log(err);
+            })
+            return
+        }
 
-        sendSettings(upData,patientInfo.id).then(res => {
+        sendSetting(`${URL}${END_POINT.PROFILE}`,upData).then(res => {
             console.log(res);
+            setWatchForData(true)
         }).catch(err => {
             console.log(err);
         })
+
+      
     };  
    
-    
     useEffect(() => {
         
       
         getData(`${URL}${END_POINT.PROFILE}/${patientInfo.id}`).then(data => {
+            if(data.data == null) {
+                setWatchForData(false);
+                return;
+            }
+                setWatchForData(true);
                 setData({...data.data})
+
             }).catch(err => {
                 console.log(err);
             })
